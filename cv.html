@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layal Sleiman — Curriculum Vitae</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #b8965a;
+            --gold-light: #d4b87a;
+            --dark: #1a1a1a;
+            --text: #2d2d2d;
+            --text-muted: #5a5a5a;
+            --text-light: #888;
+            --border: #d5cec3;
+            --bg: #faf9f7;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            font-size: 8.5pt;
+            line-height: 1.6;
+            font-weight: 300;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px 45px 35px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 45px;
+            right: 45px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28pt;
+            font-weight: 400;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .header h1 span {
+            font-weight: 300;
+        }
+
+        .header .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11pt;
+            color: var(--gold-light);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 18px;
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 25px;
+            font-size: 8pt;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.3px;
+        }
+
+        .header-contact span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-contact .icon {
+            color: var(--gold-light);
+            font-size: 9pt;
+        }
+
+        /* SUMMARY */
+        .summary {
+            padding: 25px 45px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .summary p {
+            color: var(--text-muted);
+            font-size: 8.5pt;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* MAIN LAYOUT */
+        .main {
+            display: flex;
+        }
+
+        .col-left {
+            flex: 1.15;
+            padding: 25px 30px 40px 45px;
+            border-right: 1px solid var(--border);
+        }
+
+        .col-right {
+            flex: 0.85;
+            padding: 25px 45px 40px 30px;
+        }
+
+        /* SECTION TITLES */
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10pt;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 15px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* EXPERIENCE ITEMS */
+        .exp-item {
+            margin-bottom: 18px;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3px;
+        }
+
+        .exp-header h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10pt;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .exp-date {
+            font-size: 7.5pt;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .exp-location {
+            font-size: 8pt;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 6px;
+        }
+
+        .exp-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exp-list li {
+            font-size: 8pt;
+            color: var(--text-muted);
+            line-height: 1.7;
+            padding-left: 12px;
+            position: relative;
+            font-weight: 300;
+        }
+
+        .exp-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 4px;
+            height: 4px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+        }
+
+        /* SECTION SPACING */
+        .section {
+            margin-bottom: 22px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        /* EDUCATION */
+        .edu-item {
+            margin-bottom: 10px;
+        }
+
+        .edu-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .edu-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 9.5pt;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .edu-item .edu-meta {
+            font-size: 7.5pt;
+            color: var(--text-light);
+        }
+
+        /* SKILLS / TAGS */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .tag-list li {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            font-size: 7.5pt;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        /* LANGUAGES */
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 8.5pt;
+        }
+
+        .lang-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .lang-name {
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .lang-level {
+            display: flex;
+            gap: 4px;
+        }
+
+        .lang-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+        }
+
+        .lang-dot.filled {
+            background: var(--gold);
+        }
+
+        /* RESEARCH */
+        .research-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .research-list li {
+            font-size: 8pt;
+            color: var(--text-muted);
+            line-height: 1.7;
+            padding-left: 12px;
+            position: relative;
+            font-weight: 300;
+            margin-bottom: 2px;
+        }
+
+        .research-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 4px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        /* PAGE 2 */
+        .page-break {
+            page-break-before: always;
+        }
+
+        .page2-header {
+            background: var(--dark);
+            padding: 20px 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page2-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12pt;
+            font-weight: 400;
+            color: var(--white);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .page2-header span {
+            font-size: 8pt;
+            color: var(--gold-light);
+            letter-spacing: 1px;
+        }
+
+        .page2-content {
+            padding: 30px 45px 40px;
+        }
+
+        /* PRINT */
+        @media print {
+            body {
+                background: white;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+            }
+        }
+
+        @media screen {
+            .page {
+                box-shadow: 0 0 40px rgba(0,0,0,0.1);
+                margin: 30px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1 -->
+    <div class="page">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>Layal <span>Sleiman</span></h1>
+            <div class="title">Architect</div>
+            <div class="header-contact">
+                <span><span class="icon">&#9993;</span> layal.sleiman.96@gmail.com</span>
+                <span><span class="icon">&#9670;</span> Munich, Germany</span>
+            </div>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="summary">
+            <p>Architect with a Master of Arts in Architectural Engineering and a proven track record in developing innovative design solutions across research and practice. Registered member of the Bayerische Architektenkammer (Chamber of Architects, Bavaria) and the Order of Engineers and Architects in Beirut. Experienced in comprehensive project management — from initial site analysis through on-site supervision — ensuring alignment with client expectations and regulatory requirements. Multilingual, highly motivated, and skilled at integrating sustainable practices into diverse architectural projects.</p>
+        </div>
+
+        <!-- MAIN -->
+        <div class="main">
+            <!-- LEFT COLUMN -->
+            <div class="col-left">
+                <div class="section">
+                    <div class="section-title">Professional Experience</div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3>Freelance Architect</h3>
+                            <span class="exp-date">2021 — Present</span>
+                        </div>
+                        <div class="exp-location">Beirut, Lebanon</div>
+                        <ul class="exp-list">
+                            <li>Residential villa design with comprehensive landscape documentation</li>
+                            <li>Full architectural design for single-family houses including landscape elements</li>
+                            <li>Interior design projects — kitchens, living spaces, and material specification</li>
+                            <li>Construction documentation packages across all building disciplines</li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3>Architect — SFArchitects</h3>
+                            <span class="exp-date">Oct 2019 — Oct 2021</span>
+                        </div>
+                        <div class="exp-location">Beirut, Lebanon</div>
+                        <ul class="exp-list">
+                            <li>Conducted comprehensive site analyses, evaluating functional requirements and architectural conditions</li>
+                            <li>Delivered innovative design solutions tailored to client needs within spatial and structural constraints</li>
+                            <li>Coordinated with interdisciplinary teams to integrate specialized contributions into cohesive project outcomes</li>
+                            <li>Developed and managed project timelines in coordination with clients and contractors</li>
+                            <li>Prepared detailed specifications to align project budgets with architectural requirements</li>
+                            <li>Managed building permit applications ensuring regulatory compliance</li>
+                            <li>Assembled and organized executive documentation for streamlined project execution</li>
+                            <li>Supervised on-site construction to ensure adherence to design specifications and quality standards</li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3>Architectural Intern — Prime Construction / Bitar Construction</h3>
+                            <span class="exp-date">2018</span>
+                        </div>
+                        <div class="exp-location">Under the supervision of Architect Hussein Ghannam, Beirut, Lebanon</div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3>Architectural Intern — Office of Dr. Ali Hassan</h3>
+                            <span class="exp-date">2017</span>
+                        </div>
+                        <div class="exp-location">Bekaa, Lebanon</div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3>Architectural Intern — Municipal Office</h3>
+                            <span class="exp-date">2016</span>
+                        </div>
+                        <div class="exp-location">Beirut, Lebanon</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Teaching Experience</div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3>Private Tutor — Architecture Entrance Exam Preparation</h3>
+                            <span class="exp-date">2020</span>
+                        </div>
+                        <div class="exp-location">Lebanese University, Beirut, Lebanon</div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3>Teacher — Haret Hreik School</h3>
+                            <span class="exp-date">2017 — 2018</span>
+                        </div>
+                        <div class="exp-location">In partnership with the British Council &amp; Ministry of Education, Beirut</div>
+                        <ul class="exp-list">
+                            <li>Delivered courses across multiple subjects</li>
+                            <li>Completed professional development training at the British Council, Sin el Fil</li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3>Teacher — Bourj Albarajne School</h3>
+                            <span class="exp-date">2016 — 2017</span>
+                        </div>
+                        <div class="exp-location">In collaboration with "Ana Aqraa" (UNDP) &amp; Ministry of Education, Beirut</div>
+                        <ul class="exp-list">
+                            <li>Taught mathematics and provided pastoral support to students</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="col-right">
+                <div class="section">
+                    <div class="section-title">Education</div>
+
+                    <div class="edu-item">
+                        <h3>Master of Arts in Architecture</h3>
+                        <div class="edu-meta">Lebanese University, Beirut — 2017–2019</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <h3>Bachelor of Arts in Architecture</h3>
+                        <div class="edu-meta">Lebanese University, Beirut — 2014–2017</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <h3>First Year, B.Sc. in Mathematics</h3>
+                        <div class="edu-meta">Lebanese University, Beirut — 2013–2014</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Software</div>
+                    <ul class="tag-list">
+                        <li>AutoCAD 2D/3D</li>
+                        <li>Revit</li>
+                        <li>SketchUp</li>
+                        <li>Lumion</li>
+                        <li>Illustrator</li>
+                        <li>Photoshop</li>
+                        <li>Word</li>
+                        <li>Excel</li>
+                        <li>PowerPoint</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Languages</div>
+
+                    <div class="lang-item">
+                        <span class="lang-name">Arabic</span>
+                        <span class="lang-level">
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                        </span>
+                    </div>
+
+                    <div class="lang-item">
+                        <span class="lang-name">French</span>
+                        <span class="lang-level">
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot"></span>
+                        </span>
+                    </div>
+
+                    <div class="lang-item">
+                        <span class="lang-name">English</span>
+                        <span class="lang-level">
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot"></span>
+                            <span class="lang-dot"></span>
+                        </span>
+                    </div>
+
+                    <div class="lang-item">
+                        <span class="lang-name">German</span>
+                        <span class="lang-level">
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot filled"></span>
+                            <span class="lang-dot"></span>
+                            <span class="lang-dot"></span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Professional Memberships</div>
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3>Bayerische Architektenkammer</h3>
+                        </div>
+                        <div class="exp-location">Chamber of Architects, Bavaria, Germany</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3>Order of Engineers and Architects</h3>
+                        </div>
+                        <div class="exp-location">Beirut, Lebanon</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Strengths</div>
+                    <ul class="research-list">
+                        <li>Strong and effective communicator</li>
+                        <li>Collaborative team player</li>
+                        <li>Skilled in handcrafts, decoration, and drawing</li>
+                        <li>Highly motivated and eager to learn</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

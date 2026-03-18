@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layal Sleiman | Architecture Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #141414;
+            --text: #e8e8e8;
+            --text-muted: #888;
+            --accent: #c9a96e;
+            --accent-dim: rgba(201, 169, 110, 0.15);
+            --border: #222;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 40px;
+            transition: all 0.3s;
+        }
+
+        nav .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        nav .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 1.5px;
+            background: var(--text);
+            transition: 0.3s;
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, var(--accent-dim) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(100, 100, 100, 0.05) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--accent);
+        }
+
+        .hero .subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .hero .credentials {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        .hero .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator .line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .section-header .line {
+            width: 60px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* PROJECT GRID */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s, border-color 0.4s;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .project-card .thumb {
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-card .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .project-card:hover .thumb img {
+            transform: scale(1.05);
+        }
+
+        .project-card .thumb .category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 5px 14px;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid rgba(201, 169, 110, 0.3);
+        }
+
+        .project-card .info {
+            padding: 25px 30px 30px;
+        }
+
+        .project-card .info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .project-card .info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* MODAL / LIGHTBOX */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 200;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+
+        .modal {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .modal-header .close-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 45px;
+            height: 45px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .modal-header .close-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .modal-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 800px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .modal-section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+            margin-top: 50px;
+        }
+
+        .modal-section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-gallery img {
+            width: 100%;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .modal-gallery img:hover {
+            border-color: var(--accent);
+        }
+
+        .modal-gallery.single-col {
+            grid-template-columns: 1fr;
+            max-width: 900px;
+        }
+
+        .modal-gallery.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .modal-gallery.two-col img {
+            width: auto;
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+        }
+
+        /* PROJECT 1: Top two full-width images, same width */
+        .p1-top-section {
+            max-width: 900px;
+            margin-bottom: 20px;
+        }
+
+        .p1-top-section img {
+            width: 100%;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p1-top-section img:hover {
+            border-color: var(--accent);
+        }
+
+        /* PROJECT 1: Unified 2-column grid, no crop */
+        .p1-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .p1-grid .p1-cell {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .p1-grid .p1-cell:hover {
+            border-color: var(--accent);
+        }
+
+        .p1-grid .p1-cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            display: block;
+        }
+
+        /* Titled perspective cells */
+        .p1-titled-cell {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .p1-titled-cell .p1-cell {
+            flex: 1;
+        }
+
+        /* PROJECT 1: Natural 2-col grid, images at natural proportions */
+        .p1-grid-natural {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .p1-grid-natural img {
+            width: 100%;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p1-grid-natural img:hover {
+            border-color: var(--accent);
+        }
+
+        .p1-titled-img {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .p1-titled-img img {
+            width: 100%;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p1-titled-img img:hover {
+            border-color: var(--accent);
+        }
+
+        .img-overlay-title {
+            position: absolute;
+            bottom: 8px;
+            left: 35%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 0.75rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 4px 10px;
+            letter-spacing: 1px;
+            font-weight: 300;
+            pointer-events: none;
+        }
+
+        .img-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-align: center;
+            padding: 8px 0 0;
+            font-weight: 300;
+        }
+
+        /* PROJECT 2 STYLES */
+        /* Design process scaled up */
+        .p2-design-process {
+            margin-bottom: 20px;
+        }
+
+        .p2-design-process img {
+            width: 100%;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p2-design-process img:hover {
+            border-color: var(--accent);
+        }
+
+        /* Common-height row: images share same height, width scales proportionally */
+        .p2-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .p2-row img {
+            height: 500px;
+            width: auto;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p2-row img:hover {
+            border-color: var(--accent);
+        }
+
+        /* Single scaled-up image */
+        .p2-single-scaled {
+            margin-bottom: 20px;
+        }
+
+        .p2-single-scaled img {
+            height: 500px;
+            width: auto;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p2-single-scaled img:hover {
+            border-color: var(--accent);
+        }
+
+        /* Floor plan grid: 2 per line, common height per row */
+        .p2-floor-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .p2-floor-grid .p2-floor-item {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        .p2-floor-grid .p2-floor-item img {
+            height: 300px;
+            width: auto;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p2-floor-grid .p2-floor-item img:hover {
+            border-color: var(--accent);
+        }
+
+        /* Sections: common height */
+        .p2-sections {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .p2-sections img {
+            height: 600px;
+            width: auto;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p2-sections img:hover {
+            border-color: var(--accent);
+        }
+
+        /* PROJECT 3: Classical Forms in the Mountains */
+        .p3-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .p3-row img {
+            height: 350px;
+            width: auto;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p3-row img:hover {
+            border-color: var(--accent);
+        }
+
+        .p3-floor-grid {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .p3-floor-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .p3-floor-item img {
+            height: 350px;
+            width: auto;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p3-floor-item img:hover {
+            border-color: var(--accent);
+        }
+
+        .p3-landscape {
+            margin-bottom: 20px;
+        }
+
+        .p3-landscape img {
+            height: 500px;
+            width: auto;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p3-landscape img:hover {
+            border-color: var(--accent);
+        }
+
+        /* PROJECT 5: Before/After Comparison */
+        .p5-compare-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+
+        .p5-compare-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .p5-compare-item img {
+            height: 450px;
+            width: auto;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p5-compare-item img:hover {
+            border-color: var(--accent);
+        }
+
+        .p5-maquette {
+            margin-bottom: 20px;
+        }
+
+        .p5-maquette img {
+            height: 400px;
+            width: auto;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p5-maquette img:hover {
+            border-color: var(--accent);
+        }
+
+        /* PROJECT 7a: Open-Plan Kitchen Design */
+        .p7-after {
+            margin-bottom: 20px;
+            max-width: calc((100% - 30px) / 3 * 2 + 15px);
+        }
+
+        .p7-after img {
+            width: 100%;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .p7-after img:hover {
+            border-color: var(--accent);
+        }
+
+        /* FULLSCREEN IMAGE VIEWER */
+        .fullscreen-viewer {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.97);
+            z-index: 300;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .fullscreen-viewer.active {
+            display: flex;
+        }
+
+        .fullscreen-viewer img {
+            max-width: 95vw;
+            max-height: 95vh;
+            object-fit: contain;
+        }
+
+        /* CV */
+        .cv-section {
+            padding: 100px 8%;
+        }
+
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .cv-block {
+            margin-bottom: 40px;
+        }
+
+        .cv-block h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .cv-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 1px solid var(--border);
+        }
+
+        .cv-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .cv-item .cv-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+            margin-bottom: 8px;
+        }
+
+        .cv-item p, .cv-item li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .cv-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cv-item ul li::before {
+            content: "\203A";
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .cv-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .cv-tags li {
+            background: rgba(201, 169, 110, 0.1);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .cv-download {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .cv-download:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* ABOUT */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .skills-list li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding-left: 15px;
+            position: relative;
+            font-weight: 300;
+        }
+
+        .skills-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 6px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* CONTACT */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .contact-email {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 2px;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .contact-email:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-gallery,
+            .p1-grid,
+            .p1-grid-natural {
+                grid-template-columns: 1fr;
+            }
+
+            .p2-row,
+            .p2-sections,
+            .p3-row,
+            .p3-floor-grid,
+            .p5-compare-row {
+                flex-direction: column;
+            }
+
+            .p2-row img,
+            .p2-sections img,
+            .p2-floor-grid .p2-floor-item img,
+            .p3-row img,
+            .p3-floor-item img,
+            .p3-landscape img,
+            .p5-maquette img {
+                height: auto !important;
+                width: 100% !important;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cv-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            nav .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px 40px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            nav .nav-links.open {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .modal {
+                padding: 20px;
+            }
+        }
+
+        /* FADE IN ANIMATION */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">Layal Sleiman</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Layal <span>Sleiman</span></h1>
+            <p class="subtitle">Architecture &amp; Design Portfolio</p>
+            <p class="credentials">B.Sc. &amp; M.Sc. in Architecture</p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="line"></div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-header fade-in">
+            <h2>Selected Works</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- Project 1 -->
+            <div class="project-card fade-in" onclick="openModal('project1')">
+                <div class="thumb">
+                    <img src="project 1 medical spa project/perspectives/perspective 2.png" alt="Sanctuary in the Pines" loading="lazy">
+                    <div class="category">Hospitality</div>
+                </div>
+                <div class="info">
+                    <h3>Sanctuary in the Pines</h3>
+                    <p>A medical spa complex sculpted into a hillside landscape, featuring terraced green roofs, accommodation pavilions, and a principal treatment building seamlessly integrated with the natural terrain.</p>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card fade-in" onclick="openModal('project2')">
+                <div class="thumb">
+                    <img src="project 2 mixed use building/perspective.jpg" alt="Between Heritage and Skyline" loading="lazy">
+                    <div class="category">Mixed-Use</div>
+                </div>
+                <div class="info">
+                    <h3>Between Heritage and Skyline</h3>
+                    <p>A twin-tower waterfront development on Beirut's seafront, connected by a commercial podium inspired by the city's ancient urban fabric.</p>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card fade-in" onclick="openModal('project3')">
+                <div class="thumb">
+                    <img src="project 3 jbaa villa/perspectives of villa/1.png" alt="Classical Forms in the Mountains" loading="lazy">
+                    <div class="category">Residential</div>
+                </div>
+                <div class="info">
+                    <h3>Classical Forms in the Mountains</h3>
+                    <p>A four-story villa rooted in classical Lebanese stone architecture, leveraging a sharp natural slope to gain an underground floor with exterior exposure.</p>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card fade-in" onclick="openModal('project4')">
+                <div class="thumb">
+                    <img src="project 4 bikaa villa/after/perspectives/2.png" alt="Bikaa Modern Villa" loading="lazy">
+                    <div class="category">Residential</div>
+                </div>
+                <div class="info">
+                    <h3>Two-Story Contemporary Villa</h3>
+                    <p>A two-story village villa designed to maximize land use with private and common gardens, unobstructed views, and a relaxed entrance sequence.</p>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card fade-in" onclick="openModal('project5')">
+                <div class="thumb">
+                    <img src="project 5 modernization of elevations of villa/after/1.png" alt="Framing a New Identity" loading="lazy">
+                    <div class="category">Facade Design</div>
+                </div>
+                <div class="info">
+                    <h3>Framing a New Identity</h3>
+                    <p>Transforming a raw concrete shell into a refined contemporary residence through crisp volumes, warm wood detailing, and a cohesive material palette.</p>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card fade-in" onclick="openModal('project6')">
+                <div class="thumb">
+                    <img src="project 6 details drawing plans/architectural plans/elevation.png" alt="Technical Construction Documents" loading="lazy">
+                    <div class="category">Technical</div>
+                </div>
+                <div class="info">
+                    <h3>Comprehensive Construction Documentation</h3>
+                    <p>A comprehensive set of detailed construction drawings spanning architectural plans, structural foundations, MEP systems, and electrical layouts with full specifications.</p>
+                </div>
+            </div>
+
+            <!-- Project 6b: Landscape Design -->
+            <div class="project-card fade-in" onclick="openModal('project6b')">
+                <div class="thumb">
+                    <img src="project 6 details drawing plans/landscape plans/master plan landscape.png" alt="Landscape Design" loading="lazy">
+                    <div class="category">Landscape</div>
+                </div>
+                <div class="info">
+                    <h3>Landscape Design & Documentation</h3>
+                    <p>A complete landscape design package including master plan, lighting, dimensioning, and detailed construction drawings for outdoor living elements.</p>
+                </div>
+            </div>
+
+            <!-- Project 7a: Open-Plan Kitchen Design -->
+            <div class="project-card fade-in" onclick="openModal('project7a')">
+                <div class="thumb">
+                    <img src="project 7 Interior design/kitchen design/after/perspectives/5.png" alt="Open-Plan Kitchen Design" loading="lazy">
+                    <div class="category">Interior Design</div>
+                </div>
+                <div class="info">
+                    <h3>Open-Plan Kitchen Design</h3>
+                    <p>A complete kitchen redesign featuring modern marble and walnut finishes, transforming an outdated space into a refined, functional interior.</p>
+                </div>
+            </div>
+
+            <!-- Project 7b: Kitchen Transformation & Interior Documentation -->
+            <div class="project-card fade-in" onclick="openModal('project7b')">
+                <div class="thumb">
+                    <img src="project 7 Interior design/kitchen modernization/after/kitchen plan.jpg" alt="Kitchen Transformation & Interior Documentation" loading="lazy">
+                    <div class="category">Interior Design</div>
+                </div>
+                <div class="info">
+                    <h3>Kitchen Transformation & Interior Documentation</h3>
+                    <p>A kitchen renovation project that modernizes an existing space through new layouts, updated sections, and improved spatial planning.</p>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-card fade-in" onclick="openModal('project8')">
+                <div class="thumb">
+                    <img src="project 8 skills design of logo of haute couture with name saule and using the meaning of the name as a concept of the design/1.png" alt="Saule Haute Couture Brand Identity" loading="lazy">
+                    <div class="category">Branding</div>
+                </div>
+                <div class="info">
+                    <h3>Brand Identity Design — Saule Haute Couture</h3>
+                    <p>Brand identity design for a haute couture house, with a logo inspired by the meaning of "Saule" -- incorporating sun rays and an elegant silhouette within a golden circular emblem.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-header fade-in">
+            <h2>About</h2>
+            <div class="line"></div>
+        </div>
+        <div class="about-content fade-in">
+            <div class="about-text">
+                <p>Layal Sleiman is an architect based in Munich, Germany, holding a Master of Arts and a Bachelor of Arts in Architecture from the Lebanese University. She is a registered member of the Bayerische Architektenkammer (Chamber of Architects, Bavaria) and the Order of Engineers and Architects in Beirut.</p>
+                <p>With a proven track record in developing innovative design solutions, she brings a strong background in both research and the practical application of architecture. Her experience spans comprehensive project management — from initial site analysis and concept development through construction documentation and on-site supervision — ensuring every project meets client expectations and regulatory requirements. Her work ranges from large-scale hospitality and mixed-use developments to residential villas, interior renovations, landscape design, and brand identity.</p>
+            </div>
+            <div>
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px;">Expertise</h3>
+                <ul class="skills-list">
+                    <li>Architectural Design</li>
+                    <li>Interior Design</li>
+                    <li>Construction Documentation</li>
+                    <li>Landscape Design</li>
+                    <li>Facade Design</li>
+                    <li>3D Visualization</li>
+                    <li>Site Supervision</li>
+                    <li>MEP Coordination</li>
+                    <li>Brand Identity</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="cv-section">
+        <div class="section-header fade-in">
+            <h2>Curriculum Vitae</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="cv-grid fade-in">
+            <!-- LEFT COLUMN -->
+            <div>
+                <div class="cv-block">
+                    <h3>Education</h3>
+                    <div class="cv-item">
+                        <h4>Master of Arts in Architecture</h4>
+                        <div class="cv-meta">Lebanese University, Beirut — 2017–2019</div>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Bachelor of Arts in Architecture</h4>
+                        <div class="cv-meta">Lebanese University, Beirut — 2014–2017</div>
+                    </div>
+                    <div class="cv-item">
+                        <h4>First Year, B.Sc. in Mathematics</h4>
+                        <div class="cv-meta">Lebanese University, Beirut — 2013–2014</div>
+                    </div>
+                </div>
+
+                <div class="cv-block">
+                    <h3>Professional Experience</h3>
+                    <div class="cv-item">
+                        <h4>Freelance Architect</h4>
+                        <div class="cv-meta">Beirut, Lebanon — 2021–Present</div>
+                        <ul>
+                            <li>Residential villa design including comprehensive landscape plans</li>
+                            <li>Full architectural design for single-family houses with landscape elements</li>
+                            <li>Interior design projects including kitchens, living spaces, and material specification</li>
+                        </ul>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Architect — SFArchitects</h4>
+                        <div class="cv-meta">Beirut, Lebanon — 2019–2021</div>
+                        <ul>
+                            <li>Comprehensive site analysis and evaluation of architectural conditions</li>
+                            <li>Innovative design solutions tailored to client requirements and spatial constraints</li>
+                            <li>Coordination with interdisciplinary teams for cohesive project outcomes</li>
+                            <li>Development and management of project timelines with clients and contractors</li>
+                            <li>Preparation and submission of building permit applications</li>
+                            <li>Assembly of executive documentation for project management and execution</li>
+                            <li>On-site construction supervision ensuring compliance with design specifications</li>
+                        </ul>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Architectural Intern — Prime Construction / Bitar Construction</h4>
+                        <div class="cv-meta">Beirut, Lebanon — 2018</div>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Architectural Intern — Office of Dr. Ali Hassan</h4>
+                        <div class="cv-meta">Bekaa, Lebanon — 2017</div>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Architectural Intern — Municipal Office</h4>
+                        <div class="cv-meta">Beirut, Lebanon — 2016</div>
+                    </div>
+                </div>
+
+                <div class="cv-block">
+                    <h3>Teaching Experience</h3>
+                    <div class="cv-item">
+                        <h4>Private Tutor — Architecture Entrance Exam Preparation</h4>
+                        <div class="cv-meta">Lebanese University, Beirut — 2020</div>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Teacher — Haret Hreik School</h4>
+                        <div class="cv-meta">In partnership with the British Council &amp; Ministry of Education, Beirut — 2017–2018</div>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Teacher — Bourj Albarajne School</h4>
+                        <div class="cv-meta">In collaboration with "Ana Aqraa" (UNDP) &amp; Ministry of Education, Beirut — 2016–2017</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div>
+                <div class="cv-block">
+                    <h3>Professional Memberships</h3>
+                    <div class="cv-item">
+                        <h4>Bayerische Architektenkammer</h4>
+                        <div class="cv-meta">Chamber of Architects, Bavaria, Germany</div>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Order of Engineers and Architects</h4>
+                        <div class="cv-meta">Beirut, Lebanon</div>
+                    </div>
+                </div>
+
+                <div class="cv-block">
+                    <h3>Software</h3>
+                    <ul class="cv-tags">
+                        <li>AutoCAD 2D/3D</li>
+                        <li>Revit</li>
+                        <li>SketchUp</li>
+                        <li>Lumion</li>
+                        <li>Illustrator</li>
+                        <li>Photoshop</li>
+                        <li>Microsoft Office</li>
+                    </ul>
+                </div>
+
+                <div class="cv-block">
+                    <h3>Languages</h3>
+                    <ul class="cv-tags">
+                        <li>Arabic — Native</li>
+                        <li>French — Advanced</li>
+                        <li>English — Intermediate</li>
+                        <li>German — Intermediate</li>
+                    </ul>
+                </div>
+
+                <div class="cv-block">
+                    <a href="Layal_Sleiman_CV.pdf" download class="cv-download">Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-header fade-in" style="text-align:center;">
+            <h2>Get in Touch</h2>
+            <div class="line" style="margin: 15px auto 0;"></div>
+        </div>
+        <div class="contact-content fade-in">
+            <p>Interested in working together? I'm always open to discussing new projects, collaborations, and design challenges.</p>
+            <a href="mailto:layal.sleiman.96@gmail.com" class="contact-email">layal.sleiman.96@gmail.com</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Layal Sleiman &mdash; Architecture Portfolio &mdash; 2026</p>
+    </footer>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- PROJECT 1: Sanctuary in the Pines -->
+    <div class="modal-overlay" id="project1">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Sanctuary in the Pines</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <p class="modal-description">Located within the largest pine forest in the Middle East, this medical spa is conceived as a healing retreat where nature becomes an essential part of the therapeutic experience. The project aims to support both physical and psychological well-being by creating a calm, private, and restorative environment away from the noise of everyday life.</p>
+            <p class="modal-description">The proposal responds to Lebanon's growing need for spaces that promote healing and mental recovery, while taking advantage of a site that is both naturally secluded and relatively accessible from the capital. Rather than opposing the land's steep topography and natural terraces, the design integrates with them, carefully adapting its forms and distributing its volumes to preserve the existing landscape and minimize tree removal.</p>
+            <p class="modal-description">Rooted in sustainability, the project reflects an architectural approach that works in harmony with nature, allowing the environment itself to become a central element in the process of healing.</p>
+
+            <div class="modal-section-title">Design Process</div>
+            <div class="p1-top-section">
+                <img src="project 1 medical spa project/design process.jpg" alt="Design Process" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Mass Plan</div>
+            <div class="p1-top-section">
+                <img src="project 1 medical spa project/mass plan/mass plan.png" alt="Mass Plan" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Perspectives</div>
+            <div class="p1-grid">
+                <div class="p1-titled-cell">
+                    <div class="p1-cell" onclick="viewFull(this.querySelector('img'))">
+                        <img src="project 1 medical spa project/perspectives/perspective 2.png" alt="Aerial View of the Resort">
+                    </div>
+                    <span class="img-title">Aerial View of the Resort</span>
+                </div>
+                <div class="p1-titled-cell">
+                    <div class="p1-cell" onclick="viewFull(this.querySelector('img'))">
+                        <img src="project 1 medical spa project/perspectives/perspective from the project.png" alt="Terrace Lounge Overlooking the Sea">
+                    </div>
+                    <span class="img-title">Terrace Lounge Overlooking the Sea</span>
+                </div>
+                <div class="p1-titled-cell">
+                    <div class="p1-cell" onclick="viewFull(this.querySelector('img'))">
+                        <img src="project 1 medical spa project/perspectives/principal buiding perspective.jpg" alt="Principal Treatment Building">
+                    </div>
+                    <span class="img-title">Principal Treatment Building</span>
+                </div>
+                <div class="p1-titled-cell">
+                    <div class="p1-cell" onclick="viewFull(this.querySelector('img'))">
+                        <img src="project 1 medical spa project/perspectives/accomodation perspective.jpg" alt="Accommodation Pavilion">
+                    </div>
+                    <span class="img-title">Accommodation Pavilion</span>
+                </div>
+            </div>
+
+            <div class="modal-section-title">Vertical Relationships</div>
+            <div class="p1-grid">
+                <div class="p1-cell" onclick="viewFull(this.querySelector('img'))">
+                    <img src="project 1 medical spa project/relation between vertical departments .png" alt="Vertical Departments Diagram">
+                </div>
+                <div class="p1-cell" onclick="viewFull(this.querySelector('img'))">
+                    <img src="project 1 medical spa project/relation between vertical accomodation.png" alt="Vertical Accommodation Diagram">
+                </div>
+            </div>
+
+            <div class="modal-section-title">Principal Building Plans</div>
+            <div class="p1-grid-natural">
+                <div class="p1-titled-img">
+                    <img src="project 1 medical spa project/plans of project/ground floor plan.jpg" alt="Ground Floor Plan" onclick="viewFull(this)">
+                    <span class="img-title">Ground Floor Plan</span>
+                </div>
+                <div class="p1-titled-img">
+                    <img src="project 1 medical spa project/plans of project/first basement floor plan.jpg" alt="First Basement Floor" onclick="viewFull(this)">
+                    <span class="img-title">First Basement Floor Plan</span>
+                </div>
+                <div class="p1-titled-img">
+                    <img src="project 1 medical spa project/plans of project/second basement floor plan.jpg" alt="Second Basement Floor" onclick="viewFull(this)">
+                    <span class="img-title">Second Basement Floor Plan</span>
+                </div>
+                <div class="p1-titled-img">
+                    <img src="project 1 medical spa project/plans of project/third basement floor plan.jpg" alt="Third Basement Floor" onclick="viewFull(this)">
+                    <span class="img-title">Third Basement Floor Plan</span>
+                </div>
+                <div class="p1-titled-img">
+                    <img src="project 1 medical spa project/plans of project/fourth basement floor plan.jpg" alt="Fourth Basement Floor" onclick="viewFull(this)">
+                    <span class="img-title">Fourth Basement Floor Plan</span>
+                </div>
+                <div class="p1-titled-img">
+                    <img src="project 1 medical spa project/plans of project/fifth basement floor plan.jpg" alt="Fifth Basement Floor" onclick="viewFull(this)">
+                    <span class="img-title">Fifth Basement Floor Plan</span>
+                </div>
+                <div class="p1-titled-img">
+                    <img src="project 1 medical spa project/plans of project/sixth basement floor plan.jpg" alt="Sixth Basement Floor" onclick="viewFull(this)">
+                    <span class="img-title">Sixth Basement Floor Plan</span>
+                </div>
+            </div>
+
+            <div class="modal-section-title">Accommodation Plans</div>
+            <div class="p1-grid-natural">
+                <div class="p1-titled-img">
+                    <img src="project 1 medical spa project/plans of project/accomodation typical first basement floor plan.jpg" alt="Accommodation Typical First Basement" onclick="viewFull(this)">
+                    <span class="img-title">First Basement Floor Plan</span>
+                </div>
+                <div class="p1-titled-img">
+                    <img src="project 1 medical spa project/plans of project/accomodation typical second basement floor plan.jpg" alt="Accommodation Second Basement" onclick="viewFull(this)">
+                    <span class="img-title">Second Basement Floor Plan</span>
+                </div>
+            </div>
+
+            <div class="modal-section-title">Sections</div>
+            <div class="p1-grid-natural">
+                <img src="project 1 medical spa project/sections/section of the principal building.png" alt="Section - Principal Building" onclick="viewFull(this)">
+                <img src="project 1 medical spa project/sections/section of accommodation.png" alt="Section - Accommodation" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Conceptual Sketches</div>
+            <div class="p1-grid-natural">
+                <img src="project 1 medical spa project/perspectives/perspective 1.png" alt="Aerial Concept Sketch" onclick="viewFull(this)">
+                <img src="project 1 medical spa project/sketch of elevation/fgf.png" alt="Elevation Sketch" onclick="viewFull(this)">
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 2: Between Heritage and Skyline -->
+    <div class="modal-overlay" id="project2">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Between Heritage and Skyline</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <p class="modal-description">Beirut Waterfront Mixed-Use Development is located on Beirut's seafront, facing the historic Al-Majidyeh Mosque and adjacent to Zaha Hadid's Beirut Department Stores. The project is composed of two towers with distinct functions, connected through a commercial podium that becomes the public heart of the development. The podium design reinterprets the morphology of Beirut's ancient urban fabric, creating layered public spaces, shared courtyards, and green terraces. In contrast, the towers adopt a contemporary glass expression that reflects the modern skyline, while integrating a sustainable model through planted setbacks and elevated outdoor communal spaces.</p>
+
+            <div class="modal-section-title">Design Process</div>
+            <div class="p2-design-process">
+                <img src="project 2 mixed use building/design process horizontal.jpg" alt="Design Process" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Mass Plan</div>
+            <div class="p2-single-scaled">
+                <img src="project 2 mixed use building/mass plan.png" alt="Mass Plan" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Functionality</div>
+            <div class="p2-single-scaled">
+                <img src="project 2 mixed use building/functionality and zoning.png" alt="Functionality &amp; Zoning Diagram" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Perspective &amp; Elevation</div>
+            <div class="p2-row">
+                <img src="project 2 mixed use building/perspective.jpg" alt="Tower Perspective" onclick="viewFull(this)">
+                <img src="project 2 mixed use building/elevation_cropped.png" alt="Elevation" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Floor Plans</div>
+            <div class="p2-floor-grid">
+                <div class="p2-floor-item">
+                    <img src="project 2 mixed use building/New folder/ground floor.png" alt="Ground Floor" onclick="viewFull(this)" style="height:343px;">
+                    <span class="img-title">Ground Floor</span>
+                </div>
+                <div class="p2-floor-item">
+                    <img src="project 2 mixed use building/New folder/basement floor.jpg" alt="Basement Floor" onclick="viewFull(this)" style="height:343px;">
+                    <span class="img-title">Basement Floor</span>
+                </div>
+            </div>
+            <div class="p2-floor-grid">
+                <div class="p2-floor-item">
+                    <img src="project 2 mixed use building/New folder/offices typical floor plan_cropped.jpg" alt="Offices Typical Floor" onclick="viewFull(this)" style="height:264px;">
+                    <span class="img-title">Offices Floor Plan</span>
+                </div>
+                <div class="p2-floor-item">
+                    <img src="project 2 mixed use building/New folder/restaurant floor plan.png" alt="Restaurant Floor" onclick="viewFull(this)" style="height:264px;">
+                    <span class="img-title">Restaurant Floor Plan</span>
+                </div>
+            </div>
+            <div class="p2-floor-grid">
+                <div class="p2-floor-item">
+                    <img src="project 2 mixed use building/New folder/residential typical floor plan type 1 with the duplex lower level_cropped.jpg" alt="Duplex Lower Level" onclick="viewFull(this)">
+                    <span class="img-title">Duplex Lower Level</span>
+                </div>
+                <div class="p2-floor-item">
+                    <img src="project 2 mixed use building/New folder/duplex upper level_cropped.jpg" alt="Duplex Upper Level" onclick="viewFull(this)">
+                    <span class="img-title">Duplex Upper Level</span>
+                </div>
+                <div class="p2-floor-item">
+                    <img src="project 2 mixed use building/New folder/residential typical floor plan type 2.jpg" alt="Residential Typical Floor Type 2" onclick="viewFull(this)">
+                    <span class="img-title">Residential Floor Type 2</span>
+                </div>
+            </div>
+
+            <div class="modal-section-title">Sections</div>
+            <div class="p2-row">
+                <img src="project 2 mixed use building/section1.png" alt="Section 1" onclick="viewFull(this)" style="height:618px;">
+                <img src="project 2 mixed use building/section 2 cropped.png" alt="Section 2" onclick="viewFull(this)" style="height:618px;">
+            </div>
+
+            <div class="modal-section-title">Materials</div>
+            <div class="p2-single-scaled">
+                <img src="project 2 mixed use building/used materials.png" alt="Material Palette" onclick="viewFull(this)">
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 3: Classical Forms in the Mountains -->
+    <div class="modal-overlay" id="project3">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Classical Forms in the Mountains</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <p class="modal-description">This four-story residential villa in Jbaa rises against the backdrop of the Lebanese mountains, rooted in the traditions of classical Lebanese stone architecture. The design is defined by hand-cut limestone facades, pointed arches with tracery detailing, Corinthian columns and capitals, ornamental stone balustrades, and a red clay tile hip roof — elements that together evoke the grandeur of heritage Lebanese manor houses while serving a contemporary residential program.
+
+A sharp natural slope in the terrain presented both a challenge and an opportunity. By working with the topography rather than against it, the design leverages the incline to introduce a fully functional underground floor with one side fully exposed to the exterior, gaining natural light, ventilation, and direct garden access. This basement level, seamlessly integrated into the hillside, houses a garage and service areas while contributing to the villa's commanding presence on the landscape.
+
+The project was carried through from concept to construction, encompassing structural design, interior spatial planning across all four levels, and landscape design for the surrounding garden and terraces.</p>
+
+            <div class="modal-section-title">Perspectives</div>
+            <div class="p3-row">
+                <img src="project 3 jbaa villa/perspectives of villa/1.png" alt="Villa Perspective 1" onclick="viewFull(this)">
+                <img src="project 3 jbaa villa/perspectives of villa/e89b324d-45d0-4bb7-885a-56934312d324.png" alt="Villa Perspective 2" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Elevations</div>
+            <div class="p3-row">
+                <img src="project 3 jbaa villa/elevations of villa/Gemini_Generated_Image_w2vzw0w2vzw0w2vz.png" alt="Villa Elevation 1" onclick="viewFull(this)" style="height:360px;">
+                <img src="project 3 jbaa villa/elevations of villa/Gemini_Generated_Image_w2vzw0w2vzw0w2vz - Copy.png" alt="Villa Elevation 2" onclick="viewFull(this)" style="height:360px;">
+            </div>
+
+            <div class="modal-section-title">Floor Plans</div>
+            <div class="p3-floor-grid">
+                <div class="p3-floor-item">
+                    <img src="project 3 jbaa villa/plans of villa/gf.jpg" alt="Ground Floor" onclick="viewFull(this)" style="height:350px;">
+                    <span class="img-title">Ground Floor</span>
+                </div>
+                <div class="p3-floor-item">
+                    <img src="project 3 jbaa villa/plans of villa/1.jpg" alt="First Floor" onclick="viewFull(this)" style="height:350px;">
+                    <span class="img-title">First Floor</span>
+                </div>
+            </div>
+            <div class="p3-floor-grid">
+                <div class="p3-floor-item">
+                    <img src="project 3 jbaa villa/plans of villa/2.jpg" alt="Second Floor" onclick="viewFull(this)">
+                    <span class="img-title">Second Floor</span>
+                </div>
+                <div class="p3-floor-item">
+                    <img src="project 3 jbaa villa/plans of villa/th.jpg" alt="Third Floor" onclick="viewFull(this)" style="height:361px;">
+                    <span class="img-title">Third Floor</span>
+                </div>
+            </div>
+
+            <div class="modal-section-title">Landscape &amp; Basement Plan</div>
+            <div class="p3-landscape">
+                <img src="project 3 jbaa villa/landcape of the garden of the villa  with the basement plan/Gemini_Generated_Image_mbgg1mbgg1mbgg1m.png" alt="Landscape & Basement Plan" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Construction Phase</div>
+            <div class="p3-row">
+                <img src="project 3 jbaa villa/construction phase/IMG-20251207-WA0065 (1).jpg" alt="Construction 1" onclick="viewFull(this)" style="height:310px;">
+                <img src="project 3 jbaa villa/construction phase/IMG-20251207-WA0070.jpg" alt="Construction 2" onclick="viewFull(this)" style="height:310px;">
+                <img src="project 3 jbaa villa/construction phase/IMG-20251207-WA0073 (1).jpg" alt="Construction 3" onclick="viewFull(this)" style="height:310px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 4: Two-Story Contemporary Villa -->
+    <div class="modal-overlay" id="project4">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Two-Story Contemporary Villa</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <p class="modal-description">This two-story villa is strategically positioned on a shared plot to preserve unobstructed views while organizing the land into two distinct outdoor zones: a private garden, accessible only from the residence, and a communal garden shared with the neighboring house. The site layout maintains a clear and welcoming entrance passage without compromising either outdoor space.
+
+The architecture adopts a contemporary vocabulary of clean geometric volumes, combining white rendered walls with warm wood cladding, structured framing elements, and vertical accent fins that enhance depth and articulation. A planted rooftop pergola crowns the composition, extending greenery upward and creating an elevated outdoor retreat.
+
+Inside, the ground floor is organized around an open-plan living area connected to the kitchen and service spaces, forming a fluid and functional social zone. The upper floor accommodates three bedrooms, two bathrooms, and a balcony overlooking the garden, providing private spaces with direct visual connection to the landscape.</p>
+
+            <div class="modal-section-title">Design Process</div>
+            <div style="margin-bottom:20px; max-width: calc((100% - 30px) / 3 * 2 + 15px);">
+                <img src="project 4 bikaa villa/fif (1).png" alt="Design Process" onclick="viewFull(this)" style="width:100%; cursor:pointer;">
+            </div>
+
+            <div class="modal-section-title">Plans</div>
+            <div class="modal-gallery">
+                <img src="project 4 bikaa villa/after/plans/1.jpg" alt="Floor Plan 1" onclick="viewFull(this)">
+                <img src="project 4 bikaa villa/after/plans/22.jpg" alt="Floor Plan 2" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Elevations</div>
+            <div style="display:flex; gap:15px; margin-bottom:20px; align-items:flex-start;">
+                <img src="project 4 bikaa villa/after/elevation -1-.png" alt="Elevation 1" onclick="viewFull(this)" style="height:229px; width:auto; cursor:pointer;">
+                <img src="project 4 bikaa villa/after/elevation -2-.png" alt="Elevation 2" onclick="viewFull(this)" style="height:229px; width:auto; cursor:pointer;">
+                <img src="project 4 bikaa villa/after/elevation -3-.png" alt="Elevation 3" onclick="viewFull(this)" style="height:229px; width:auto; cursor:pointer;">
+            </div>
+
+            <div class="modal-section-title">Perspectives</div>
+            <div class="modal-gallery">
+                <img src="project 4 bikaa villa/after/perspectives/2.png" alt="Perspective 1" onclick="viewFull(this)">
+                <img src="project 4 bikaa villa/after/perspectives/1.png" alt="Perspective 2" onclick="viewFull(this)">
+                <img src="project 4 bikaa villa/after/perspectives/3.png" alt="Perspective 3" onclick="viewFull(this)">
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 5: Framing a New Identity -->
+    <div class="modal-overlay" id="project5">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Framing a New Identity</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <p class="modal-description">This renovation project reinterprets the exterior identity of an existing villa, transforming its raw unfinished concrete shell into a refined contemporary residence. The new facade introduces a clear architectural language defined by crisp white volumes, dark accent panels, warm wood detailing, and carefully framed openings that enhance depth, balance, and visual rhythm.
+
+Beyond a cosmetic upgrade, the intervention reshapes the villa's character through a more cohesive and elegant composition. The contrast of materials gives the elevation a modern yet welcoming expression, while the landscaped garden setting softens the architecture and strengthens its connection to the surrounding environment. The result is a renewed residential image that is clean, timeless, and distinctly contemporary.</p>
+
+            <div class="modal-section-title">Maquette</div>
+            <div class="p5-maquette">
+                <img src="project 5 modernization of elevations of villa/after/1.png" alt="3D Maquette" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Before</div>
+            <div class="p5-compare-row">
+                <div class="p5-compare-item">
+                    <img src="project 5 modernization of elevations of villa/before/IMG-20250903-WA0035.jpg" alt="Before - View 2" onclick="viewFull(this)" style="height:473px;">
+                </div>
+                <div class="p5-compare-item">
+                    <img src="project 5 modernization of elevations of villa/before/IMG-20250903-WA0032.jpg" alt="Before - View 1" onclick="viewFull(this)" style="height:473px;">
+                </div>
+            </div>
+
+            <div class="modal-section-title">After — Elevations</div>
+            <div class="p5-compare-row">
+                <div class="p5-compare-item">
+                    <img src="project 5 modernization of elevations of villa/after/elevation 1.png" alt="Elevation 1" onclick="viewFull(this)" style="height:310px;">
+                </div>
+                <div class="p5-compare-item">
+                    <img src="project 5 modernization of elevations of villa/after/elevation 2.png" alt="Elevation 2" onclick="viewFull(this)" style="height:310px;">
+                </div>
+            </div>
+
+            <div class="modal-section-title">After — Perspectives</div>
+            <div class="p5-compare-row">
+                <div class="p5-compare-item">
+                    <img src="project 5 modernization of elevations of villa/after/4.png" alt="After - Perspective 1" onclick="viewFull(this)" style="height:368px;">
+                </div>
+                <div class="p5-compare-item">
+                    <img src="project 5 modernization of elevations of villa/after/c3b8ff03-7ae7-476e-a2fb-f.png" alt="After - Perspective 2" onclick="viewFull(this)" style="height:368px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 6: Comprehensive Construction Documentation -->
+    <div class="modal-overlay" id="project6">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Comprehensive Construction Documentation</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <p class="modal-description">This project presents a complete construction documentation package developed for a multi-story residential villa composed of a basement, ground floor, and upper levels. The architectural character features a traditional stone-and-brick facade, arched window openings, and wrought iron detailing that reflect a classic residential expression.</p>
+            <p class="modal-description">The documentation set covers all major building disciplines, beginning with site fixation and detailed architectural drawings including floor plans, elevations, and sections. It further integrates structural documentation such as foundation layouts and structural ceiling systems, alongside mechanical water supply and drainage networks, and comprehensive electrical lighting and power distribution plans.</p>
+            <p class="modal-description">Each drawing is developed at execution level and coordinated across disciplines to ensure technical clarity and constructability.</p>
+
+            <div class="modal-section-title">Architectural Plans</div>
+            <div class="modal-gallery two-col">
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/architectural plans/mass plan.png" alt="Mass Plan" onclick="viewFull(this)"><span class="img-title">Mass Plan</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/architectural plans/fixation plan.png" alt="Fixation Plan" onclick="viewFull(this)"><span class="img-title">Fixation Plan</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/architectural plans/basement plan/basement.png" alt="Basement" onclick="viewFull(this)"><span class="img-title">Basement</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/architectural plans/ground floor/ground floor.png" alt="Ground Floor" onclick="viewFull(this)"><span class="img-title">Ground Floor</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/architectural plans/roof.png" alt="Roof Floor" onclick="viewFull(this)"><span class="img-title">Roof Floor</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/architectural plans/elevation.png" alt="Elevation" onclick="viewFull(this)"><span class="img-title">Elevation</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/architectural plans/section.png" alt="Section" onclick="viewFull(this)"><span class="img-title">Section</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/architectural plans/details of stair.png" alt="Stairs Details" onclick="viewFull(this)"><span class="img-title">Stairs Details</span></div>
+            </div>
+
+            <div class="modal-section-title">Structural Plans</div>
+            <div class="modal-gallery two-col">
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/structural plans/foundation.png" alt="Foundation" onclick="viewFull(this)"><span class="img-title">Foundation</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/structural plans/ceiling.png" alt="Ceiling Layout" onclick="viewFull(this)"><span class="img-title">Ground Floor Ceiling Layout</span></div>
+            </div>
+
+            <div class="modal-section-title">Mechanical Plans</div>
+            <div class="modal-gallery two-col">
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/mechanical plans/ground floor.png" alt="Water Supply" onclick="viewFull(this)"><span class="img-title">Ground Floor Water Supply</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/mechanical plans/drainage plan.png" alt="Drainage" onclick="viewFull(this)"><span class="img-title">Ground Floor Drainage</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/mechanical plans/roof drainage.png" alt="Roof Drainage" onclick="viewFull(this)"><span class="img-title">Roof Floor Drainage</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/mechanical plans/roof water supply.png" alt="Roof Water Supply" onclick="viewFull(this)"><span class="img-title">Roof Floor Water Supply</span></div>
+            </div>
+
+            <div class="modal-section-title">Electrical Plans</div>
+            <div class="modal-gallery two-col">
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/electrical plans/lighting floor.png" alt="Lighting" onclick="viewFull(this)"><span class="img-title">Ground Floor Lighting</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/electrical plans/sockets floor.png" alt="Sockets" onclick="viewFull(this)"><span class="img-title">Ground Floor Sockets</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/electrical plans/details.png" alt="Electrical Details" onclick="viewFull(this)"><span class="img-title">Switches &amp; Sockets Section</span></div>
+                <div class="p3-floor-item"><img src="project 6 details drawing plans/electrical plans/table .png" alt="Panel Board" onclick="viewFull(this)"><span class="img-title">GF Floor Panel Board</span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PROJECT 6b: Landscape Design & Documentation -->
+    <div class="modal-overlay" id="project6b">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Landscape Design & Documentation</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <p class="modal-description">This project presents a comprehensive landscape design package that reimagines the outdoor environment of a residential property as a sequence of connected yet clearly defined spaces. The master plan is structured around a central pool, creating a focal point that organizes the surrounding zones for parking, entertainment, and relaxation. Key elements include a sunken seating area, a diwaniyeh pavilion, a swing corner, a pergola deck, and a water feature, each contributing to a layered outdoor experience.</p>
+            <p class="modal-description">Beyond the spatial concept, the project includes a full set of technical landscape documentation. The package features a dimensioned master layout, an integrated outdoor lighting scheme, and detailed drawings for all landscape components. Architectural elements such as the entrance arch, boundary fence, wall treatments, decorative cladding, and parking pergola are developed through plans, sections, elevations, and material specifications to ensure clarity, coordination, and precise execution on site.</p>
+
+            <div class="modal-section-title">Landscape Plans</div>
+            <div class="modal-gallery two-col">
+                <div style="position:relative;"><img src="project 6 details drawing plans/landscape plans/master plan landscape.png" alt="Master Plan" onclick="viewFull(this)"><span class="img-overlay-title">Master Plan</span></div>
+                <div style="position:relative;"><img src="project 6 details drawing plans/landscape plans/dimensions plan landscape.png" alt="Dimensions Plan" onclick="viewFull(this)"><span class="img-overlay-title">Dimensions Plan</span></div>
+                <div style="position:relative;"><img src="project 6 details drawing plans/landscape plans/lighting plan landscape.png" alt="Lighting Plan" onclick="viewFull(this)"><span class="img-overlay-title">Lighting Plan</span></div>
+                <div><img src="project 6 details drawing plans/landscape plans/schedule.png" alt="Drawings Schedule" onclick="viewFull(this)"></div>
+            </div>
+
+            <div class="modal-section-title">Detail Drawings</div>
+            <div class="modal-gallery two-col">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/1.png" alt="Detail 1" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/2.png" alt="Detail 2" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/3.png" alt="Detail 3" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/4.png" alt="Detail 4" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/5.png" alt="Detail 5" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/5.2.png" alt="Detail 5.2" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/6.png" alt="Detail 6" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/7.png" alt="Detail 7" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/8.png" alt="Detail 8" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/8.2.png" alt="Detail 8.2" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/9.png" alt="Detail 9" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/99.png" alt="Detail 9.2" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/10.png" alt="Detail 10" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/10.2.png" alt="Detail 10.2" onclick="viewFull(this)">
+                <img src="project 6 details drawing plans/landscape plans/details plans of the landscape plan/11.png" alt="Detail 11" onclick="viewFull(this)">
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 7a: Open-Plan Kitchen Design -->
+    <div class="modal-overlay" id="project7a">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Open-Plan Kitchen Design</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <p class="modal-description">This project transforms an open residential space into a functional kitchen environment while maintaining visual connection with the living area. The apartment was delivered as a raw open shell where the kitchen zone was already defined by existing plumbing points, limiting the flexibility of relocating the layout.</p>
+            <p class="modal-description">Following the client's request for an L-shaped kitchen, the design organizes the workspace along two walls and introduces a marble-clad peninsula that subtly defines the boundary between the kitchen and living room while preserving openness and natural light. A full-height cabinet integrates the refrigerator and built-in appliances, while lower cabinetry beneath the window maximizes storage and maintains a clean horizontal composition.</p>
+            <p class="modal-description">The material palette combines muted grey cabinetry, natural wood cladding, and light marble countertops, creating a contemporary yet warm domestic atmosphere. The project is presented through floor plans, interior sections, and 3D visualizations illustrating the spatial transformation from an open shell into a cohesive kitchen environment.</p>
+
+            <div class="modal-section-title">Before</div>
+            <div class="modal-gallery">
+                <img src="project 7 Interior design/kitchen design/before/before1.png" alt="Kitchen Before 1" onclick="viewFull(this)">
+                <img src="project 7 Interior design/kitchen design/before/before2.png" alt="Kitchen Before 2" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">After</div>
+            <div class="p7-after">
+                <img src="project 7 Interior design/kitchen design/after/perspectives/2.jpg" alt="Kitchen After" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Plan</div>
+            <div class="p7-after">
+                <img src="project 7 Interior design/kitchen design/after/plans/plan.jpg" alt="Kitchen Plan" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Sections</div>
+            <div class="modal-gallery">
+                <img src="project 7 Interior design/kitchen design/after/plans/section1.jpg" alt="Kitchen Section 1" onclick="viewFull(this)">
+                <img src="project 7 Interior design/kitchen design/after/plans/section2.jpg" alt="Kitchen Section 2" onclick="viewFull(this)">
+                <img src="project 7 Interior design/kitchen design/after/plans/section3.jpg" alt="Kitchen Section 3" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Perspective</div>
+            <div class="modal-gallery">
+                <img src="project 7 Interior design/kitchen design/after/perspectives/5.png" alt="Kitchen Perspective" onclick="viewFull(this)">
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 7b: Kitchen Transformation & Interior Documentation -->
+    <div class="modal-overlay" id="project7b">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Kitchen Transformation & Interior Documentation</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <p class="modal-description">This project reimagines an outdated kitchen as a contemporary L-shaped workspace, improving functionality while responding carefully to the existing conditions of the room. As shown in the before image, the original layout combined freestanding appliances, a central dining table, and a door that limited the efficiency of the space.</p>
+            <p class="modal-description">The redesign preserves the existing sink location to minimize plumbing alterations, while reorganizing the layout to form a compact and efficient work triangle between the refrigerator, sink, and cooktop. The former door opening was replaced with a window, allowing more natural light to enter the space and improving both usability and spatial clarity.</p>
+            <p class="modal-description">The new design introduces handleless slab cabinetry in a warm cream tone, paired with integrated appliances and light stone countertops to create a clean and contemporary atmosphere aligned with the client's vision. The proposal is documented through a dimensioned floor plan and interior sections, illustrating the spatial transformation and the detailed configuration of the cabinetry, appliances, and finishes.</p>
+
+            <div class="modal-section-title">Before</div>
+            <div class="modal-gallery">
+                <img src="project 7 Interior design/kitchen modernization/before/IMG-20251114-WA0018.jpg" alt="Kitchen Mod Before" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Plan</div>
+            <div class="modal-gallery">
+                <img src="project 7 Interior design/kitchen modernization/after/kitchen plan.jpg" alt="Kitchen Mod Plan" onclick="viewFull(this)">
+            </div>
+
+            <div class="modal-section-title">Sections</div>
+            <div class="modal-gallery">
+                <img src="project 7 Interior design/kitchen modernization/after/section 1.jpg" alt="Kitchen Mod Section 1" onclick="viewFull(this)">
+                <img src="project 7 Interior design/kitchen modernization/after/section2.jpg" alt="Kitchen Mod Section 2" onclick="viewFull(this)">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PROJECT 8: Saule Haute Couture -->
+    <div class="modal-overlay" id="project8">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Brand Identity Design — Saule Haute Couture</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <p class="modal-description">This project presents the brand identity design for "Saule" Haute Couture, developed to reflect elegance, femininity, and radiance. The concept draws inspiration from the meaning of the name Saule, evoking sunlight and brilliance as the core visual theme of the brand.</p>
+            <p class="modal-description">The logo combines a circular golden emblem with stylized sun rays and a feminine silhouette in a flowing gown, symbolizing both luxury fashion and radiant beauty. The refined gold-on-deep-blue palette reinforces the sense of exclusivity and sophistication associated with haute couture.</p>
+            <p class="modal-description">The identity system extends across key brand materials, including shopping bags and business cards, ensuring visual consistency and a strong, recognizable presence. The result is a cohesive brand image that communicates elegance, luxury, and timeless style.</p>
+
+            <div class="modal-section-title">Brand Identity</div>
+            <div class="modal-gallery">
+                <img src="project 8 skills design of logo of haute couture with name saule and using the meaning of the name as a concept of the design/2.png" alt="Logo Design" onclick="viewFull(this)">
+                <img src="project 8 skills design of logo of haute couture with name saule and using the meaning of the name as a concept of the design/1.png" alt="Brand Application" onclick="viewFull(this)">
+            </div>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN VIEWER -->
+    <div class="fullscreen-viewer" id="fullscreenViewer" onclick="closeFull()">
+        <img id="fullscreenImg" src="" alt="">
+    </div>
+
+    <script>
+        // Mobile nav
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModal();
+            });
+        });
+
+        function viewFull(img) {
+            event.stopPropagation();
+            document.getElementById('fullscreenImg').src = img.src;
+            document.getElementById('fullscreenViewer').classList.add('active');
+        }
+
+        function closeFull() {
+            document.getElementById('fullscreenViewer').classList.remove('active');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (document.getElementById('fullscreenViewer').classList.contains('active')) {
+                    closeFull();
+                } else {
+                    closeModal();
+                }
+            }
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
