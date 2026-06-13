@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layal Sleiman — Curriculum Vitae</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #b8965a;
@@ -12,9 +12,10 @@
             --dark: #1a1a1a;
             --text: #2d2d2d;
             --text-muted: #5a5a5a;
-            --text-light: #888;
-            --border: #d5cec3;
+            --text-light: #8a8378;
+            --border: #ddd6cb;
             --bg: #faf9f7;
+            --cream: #f4f1ea;
             --white: #ffffff;
         }
 
@@ -32,9 +33,9 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text);
-            background: var(--bg);
-            font-size: 7pt;
-            line-height: 1.45;
+            background: #e8e6e1;
+            font-size: 7.4pt;
+            line-height: 1.5;
             font-weight: 300;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
@@ -47,26 +48,22 @@
             background: var(--white);
             position: relative;
             overflow: hidden;
-            page-break-after: avoid;
-            page-break-inside: avoid;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* HEADER */
+        /* ===== HEADER ===== */
         .header {
             background: var(--dark);
             color: var(--white);
-            padding: 14px 35px 10px;
+            padding: 15px 40px 13px;
             position: relative;
         }
 
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 40px;
-            right: 40px;
-            height: 2px;
-            background: var(--gold);
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
         }
 
         .header h1 {
@@ -75,29 +72,37 @@
             font-weight: 400;
             letter-spacing: 6px;
             text-transform: uppercase;
-            margin-bottom: 2px;
+            line-height: 1;
         }
 
         .header h1 span {
             font-weight: 300;
+            color: var(--gold-light);
         }
 
-        .header .title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 9.5pt;
+        .header .role {
+            font-family: 'Inter', sans-serif;
+            font-size: 7.2pt;
             color: var(--gold-light);
             letter-spacing: 3px;
             text-transform: uppercase;
-            font-weight: 300;
-            margin-bottom: 8px;
+            font-weight: 400;
+            text-align: right;
+            max-width: 200px;
+        }
+
+        .header-divider {
+            height: 1px;
+            background: linear-gradient(to right, var(--gold), transparent);
+            margin: 9px 0 8px;
         }
 
         .header-contact {
             display: flex;
-            gap: 25px;
-            font-size: 8pt;
-            color: rgba(255,255,255,0.7);
-            letter-spacing: 0.3px;
+            gap: 28px;
+            font-size: 7.2pt;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 0.4px;
         }
 
         .header-contact span {
@@ -108,104 +113,171 @@
 
         .header-contact .icon {
             color: var(--gold-light);
-            font-size: 9pt;
+            font-size: 8pt;
         }
 
-        /* SUMMARY */
-        .summary {
-            padding: 6px 35px;
-            border-bottom: 1px solid var(--border);
+        .header-contact a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 1px;
         }
 
-        .summary p {
+        /* ===== BODY WRAP ===== */
+        .body-wrap {
+            flex: 1;
+            padding: 9px 40px 0;
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .sec-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10.5pt;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .sec-title::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        .sec-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .block {
+            margin-bottom: 6px;
+        }
+
+        /* ===== PROFILE ===== */
+        .profile {
             color: var(--text-muted);
-            font-size: 7.2pt;
+            font-size: 7.4pt;
             line-height: 1.5;
+            padding-left: 14px;
+            border-left: 2px solid var(--gold);
             font-weight: 300;
         }
 
-        /* MAIN LAYOUT */
-        .main {
+        /* ===== CORE COMPETENCIES ===== */
+        .comp-grid {
             display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
         }
 
-        .col-left {
-            flex: 0 0 62%;
-            padding: 8px 20px 8px 35px;
-            border-right: 1px solid var(--border);
-        }
-
-        .col-right {
-            flex: 0 0 38%;
-            padding: 8px 35px 8px 20px;
-        }
-
-        /* SECTION TITLES */
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 9pt;
-            font-weight: 500;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 6px;
-            padding-bottom: 3px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        /* EXPERIENCE ITEMS */
-        .exp-item {
-            margin-bottom: 4px;
-        }
-
-        .exp-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 2px;
-        }
-
-        .exp-header h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 9pt;
-            font-weight: 500;
-            color: var(--dark);
-        }
-
-        .exp-date {
+        .comp-grid .pill {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            padding: 3px 10px;
             font-size: 7pt;
-            color: var(--text-light);
-            letter-spacing: 0.5px;
-            white-space: nowrap;
+            color: var(--text);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            border-radius: 2px;
         }
 
-        .exp-location {
-            font-size: 7.2pt;
-            color: var(--text-muted);
-            font-style: italic;
+        /* ===== EXPERIENCE TIMELINE ===== */
+        .timeline {
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 4px;
+            bottom: 4px;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .exp {
+            position: relative;
             margin-bottom: 3px;
         }
 
-        .exp-list {
-            list-style: none;
-            padding: 0;
+        .exp:last-child {
+            margin-bottom: 0;
         }
 
-        .exp-list li {
-            font-size: 7pt;
+        .exp::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 3px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 1.5px solid var(--white);
+            box-shadow: 0 0 0 1px var(--gold);
+        }
+
+        .exp-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .exp-role {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10.5pt;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .exp-date {
+            font-size: 6.8pt;
+            color: var(--white);
+            background: var(--gold);
+            padding: 2px 8px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            font-weight: 400;
+            border-radius: 2px;
+        }
+
+        .exp-place {
+            font-size: 7.2pt;
+            color: var(--gold);
+            font-style: italic;
+            font-weight: 400;
+            margin: 0 0 2px;
+        }
+
+        .exp ul {
+            list-style: none;
+        }
+
+        .exp ul li {
+            font-size: 7.1pt;
             color: var(--text-muted);
-            line-height: 1.4;
-            padding-left: 10px;
+            line-height: 1.32;
+            padding-left: 11px;
             position: relative;
             font-weight: 300;
-            margin-bottom: 1px;
+            margin-bottom: 0;
         }
 
-        .exp-list li::before {
+        .exp ul li::before {
             content: '';
             position: absolute;
             left: 0;
@@ -216,208 +288,243 @@
             border-radius: 50%;
         }
 
-        /* SECTION SPACING */
-        .section {
-            margin-bottom: 8px;
-        }
-
-        .section:last-child {
-            margin-bottom: 0;
-        }
-
-        /* EDUCATION */
-        .edu-item {
-            margin-bottom: 4px;
-        }
-
-        .edu-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .edu-item h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 8.5pt;
-            font-weight: 500;
-            color: var(--dark);
-        }
-
-        .edu-item .edu-meta {
+        .proj-types {
+            margin-top: 3px;
             font-size: 7pt;
+            color: var(--text-light);
+            padding-left: 11px;
+        }
+
+        .proj-types b {
+            color: var(--text);
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        /* ===== LOWER GRID ===== */
+        .lower-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 28px;
+        }
+
+        .edu-item {
+            margin-bottom: 5px;
+        }
+
+        .edu-item:last-child { margin-bottom: 0; }
+
+        .edu-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 9pt;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .edu-item .meta {
+            font-size: 6.9pt;
             color: var(--text-light);
         }
 
-        /* SKILLS / TAGS */
-        .tag-list {
+        /* SOFTWARE bars */
+        .skill-row {
             display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            list-style: none;
-            padding: 0;
-        }
-
-        .tag-list li {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            padding: 3px 8px;
-            font-size: 6.8pt;
-            color: var(--text-muted);
-            font-weight: 400;
-            letter-spacing: 0.2px;
-        }
-
-        /* LANGUAGES */
-        .lang-item {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 3px;
-            font-size: 7.8pt;
+            gap: 8px;
+            margin-bottom: 2px;
+            font-size: 7.1pt;
         }
 
-        .lang-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .lang-name {
+        .skill-row .name {
+            flex: 0 0 90px;
             color: var(--text);
             font-weight: 400;
         }
 
-        .lang-label {
+        .skill-bar {
+            flex: 1;
+            height: 4px;
+            background: var(--cream);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .skill-bar i {
+            display: block;
+            height: 100%;
+            background: var(--gold);
+        }
+
+        .skill-row .lvl {
+            flex: 0 0 58px;
+            text-align: right;
+            font-size: 6.6pt;
             color: var(--text-light);
-            font-size: 7pt;
-            font-weight: 300;
-            margin-left: 4px;
+            letter-spacing: 0.3px;
         }
 
-        .lang-level {
+        /* LANGUAGES */
+        .lang-row {
             display: flex;
-            gap: 4px;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3px;
+            font-size: 7.4pt;
         }
 
-        .lang-dot {
+        .lang-row .name {
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .lang-row .name b {
+            color: var(--text-light);
+            font-weight: 300;
+            font-size: 6.7pt;
+            margin-left: 5px;
+        }
+
+        .dots { display: flex; gap: 3px; }
+
+        .dot {
             width: 7px;
             height: 7px;
             border-radius: 50%;
             border: 1px solid var(--gold);
         }
 
-        .lang-dot.filled {
-            background: var(--gold);
+        .dot.on { background: var(--gold); }
+
+        /* MEMBERSHIPS */
+        .mem-item {
+            margin-bottom: 5px;
         }
 
-        /* RESEARCH */
-        .research-list {
-            list-style: none;
-            padding: 0;
+        .mem-item:last-child { margin-bottom: 0; }
+
+        .mem-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8.8pt;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.2;
         }
 
-        .research-list li {
-            font-size: 7pt;
-            color: var(--text-muted);
-            line-height: 1.45;
-            padding-left: 10px;
-            position: relative;
-            font-weight: 300;
-            margin-bottom: 1px;
+        .mem-item .meta {
+            font-size: 6.9pt;
+            color: var(--text-light);
+            font-style: italic;
         }
 
-        .research-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 7px;
-            width: 4px;
-            height: 1px;
-            background: var(--gold);
+        /* SELECTED PROJECTS */
+        .proj-band {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
-        /* PAGE 2 */
-        .page-break {
-            page-break-before: always;
-        }
-
-        .page2-header {
+        .proj-band .pill {
             background: var(--dark);
-            padding: 20px 45px;
+            color: var(--cream);
+            padding: 3px 10px;
+            font-size: 6.9pt;
+            font-weight: 300;
+            letter-spacing: 0.4px;
+            border-radius: 2px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.8);
+            padding: 7px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .page2-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 12pt;
-            font-weight: 400;
-            color: var(--white);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .page2-header span {
-            font-size: 8pt;
-            color: var(--gold-light);
+            font-size: 7.2pt;
             letter-spacing: 1px;
+            margin-top: 3px;
         }
 
-        .page2-content {
-            padding: 30px 45px 40px;
+        .footer .label {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 8.5pt;
         }
 
-        /* PRINT */
-        @media print {
-            body {
-                background: white;
-            }
-            .page {
-                margin: 0;
-                box-shadow: none;
-                width: 100%;
-            }
+        .footer a {
+            color: var(--white);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 1px;
         }
 
         @media screen {
-            .page {
-                box-shadow: 0 0 40px rgba(0,0,0,0.1);
-                margin: 30px auto;
-            }
+            body { padding: 24px 0; }
+            .page { box-shadow: 0 4px 40px rgba(0,0,0,0.18); }
         }
     </style>
 </head>
 <body>
-
-    <!-- PAGE 1 -->
     <div class="page">
+
         <!-- HEADER -->
         <div class="header">
-            <h1>Layal <span>Sleiman</span></h1>
-            <div class="title">Registered Architect &middot; BIM Coordination &middot; Project Architect</div>
+            <div class="header-top">
+                <h1>Layal <span>Sleiman</span></h1>
+                <div class="role">Registered Architect<br>BIM Coordination<br>Project Architect</div>
+            </div>
+            <div class="header-divider"></div>
             <div class="header-contact">
                 <span><span class="icon">&#9993;</span> layal.sleiman.96@gmail.com</span>
                 <span><span class="icon">&#9670;</span> Munich, Germany</span>
-                <span><span class="icon">&#9671;</span> <a href="https://layalsleiman.github.io/portfolio/" style="color:rgba(255,255,255,0.7); text-decoration:none; border-bottom:1px solid var(--gold-light);">layalsleiman.github.io/portfolio</a></span>
+                <span><span class="icon">&#9671;</span> <a href="https://layalsleiman.github.io/portfolio/">layalsleiman.github.io/portfolio</a></span>
             </div>
         </div>
 
-        <!-- SUMMARY -->
-        <div class="summary">
-            <p>Registered Architect and member of the Bayerische Architektenkammer with more than 5 years of professional experience delivering residential, commercial, interior design, landscape, and construction documentation projects. Experienced in managing projects from concept design through permitting, BIM coordination, technical documentation, consultant coordination, and on-site supervision. Strong background in multidisciplinary collaboration, authority submissions, construction follow-up, and the delivery of built projects. Proficient in Revit, AutoCAD, SketchUp, and Lumion, with a focus on high-quality architectural documentation and practical design solutions.</p>
-        </div>
+        <div class="body-wrap">
 
-        <!-- MAIN -->
-        <div class="main">
-            <!-- LEFT COLUMN -->
-            <div class="col-left">
-                <div class="section">
-                    <div class="section-title">Professional Experience</div>
+            <!-- PROFESSIONAL PROFILE -->
+            <div class="block">
+                <div class="sec-title">Professional Profile</div>
+                <p class="profile">Registered Architect and member of the Bayerische Architektenkammer with more than 5 years of professional experience delivering residential, commercial, interior design, landscape, and construction documentation projects. Experienced in managing projects from concept design through permitting, BIM coordination, technical documentation, consultant coordination, and on-site supervision. Strong background in multidisciplinary collaboration, authority submissions, construction follow-up, and the delivery of built projects. Proficient in Revit, AutoCAD, SketchUp, and Lumion, with a focus on high-quality architectural documentation and practical design solutions.</p>
+            </div>
 
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <h3>Freelance Architect</h3>
+            <!-- CORE COMPETENCIES -->
+            <div class="block">
+                <div class="sec-title">Core Competencies</div>
+                <div class="comp-grid">
+                    <span class="pill">Architectural Design Development</span>
+                    <span class="pill">BIM Coordination</span>
+                    <span class="pill">Revit Modeling</span>
+                    <span class="pill">Construction Documentation</span>
+                    <span class="pill">Permit Applications &amp; Regulatory Compliance</span>
+                    <span class="pill">Site Supervision</span>
+                    <span class="pill">Residential Architecture</span>
+                    <span class="pill">Commercial Architecture</span>
+                    <span class="pill">Interior Design</span>
+                    <span class="pill">Landscape Design</span>
+                    <span class="pill">Consultant Coordination</span>
+                    <span class="pill">Client Management</span>
+                    <span class="pill">Project Planning &amp; Delivery</span>
+                </div>
+            </div>
+
+            <!-- PROFESSIONAL EXPERIENCE -->
+            <div class="block">
+                <div class="sec-title">Professional Experience</div>
+                <div class="timeline">
+
+                    <div class="exp">
+                        <div class="exp-head">
+                            <div class="exp-role">Freelance Architect</div>
                             <span class="exp-date">2021 — Present</span>
                         </div>
-                        <div class="exp-location">Lebanon</div>
-                        <ul class="exp-list">
+                        <div class="exp-place">Lebanon</div>
+                        <ul>
                             <li>Delivered 7 completed architectural projects including residential villas, interior design projects, landscape developments, and comprehensive construction documentation packages</li>
                             <li>Developed architectural concepts, design presentations, permit drawings, and execution documentation</li>
                             <li>Coordinated multidisciplinary teams including structural, mechanical, electrical, and specialist consultants</li>
@@ -428,13 +535,13 @@
                         </ul>
                     </div>
 
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <h3>Architect — SFArchitects</h3>
+                    <div class="exp">
+                        <div class="exp-head">
+                            <div class="exp-role">Architect — SFArchitects</div>
                             <span class="exp-date">Oct 2019 — Oct 2021</span>
                         </div>
-                        <div class="exp-location">Beirut, Lebanon</div>
-                        <ul class="exp-list">
+                        <div class="exp-place">Beirut, Lebanon</div>
+                        <ul>
                             <li>Participated in the design and development of residential, commercial, and mixed-use projects</li>
                             <li>Conducted site analysis and feasibility studies to support design decision-making</li>
                             <li>Developed plans, elevations, sections, and architectural presentation packages</li>
@@ -445,175 +552,133 @@
                         </ul>
                     </div>
 
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <h3>Architectural Intern — Prime Construction / Bitar Construction</h3>
+                    <div class="exp">
+                        <div class="exp-head">
+                            <div class="exp-role">Architectural Intern — Prime Construction / Bitar Construction</div>
                             <span class="exp-date">2018</span>
                         </div>
-                        <div class="exp-location">Beirut, Lebanon</div>
-                        <ul class="exp-list">
+                        <div class="exp-place">Beirut, Lebanon</div>
+                        <ul>
                             <li>Assisted in architectural design development and construction documentation</li>
                             <li>Supported project teams during design coordination and site activities</li>
                         </ul>
                     </div>
 
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <h3>Architectural Intern — Office of Dr. Ali Hassan</h3>
+                    <div class="exp">
+                        <div class="exp-head">
+                            <div class="exp-role">Architectural Intern — Office of Dr. Ali Hassan</div>
                             <span class="exp-date">2017</span>
                         </div>
-                        <div class="exp-location">Bekaa, Lebanon</div>
-                        <ul class="exp-list">
+                        <div class="exp-place">Bekaa, Lebanon</div>
+                        <ul>
                             <li>Assisted in residential project development and technical drawing production</li>
                         </ul>
                     </div>
 
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <h3>Architectural Intern — Municipal Office</h3>
+                    <div class="exp">
+                        <div class="exp-head">
+                            <div class="exp-role">Architectural Intern — Municipal Office</div>
                             <span class="exp-date">2016</span>
                         </div>
-                        <div class="exp-location">Beirut, Lebanon</div>
-                        <ul class="exp-list">
+                        <div class="exp-place">Beirut, Lebanon</div>
+                        <ul>
                             <li>Supported municipal planning and architectural review activities</li>
                         </ul>
                     </div>
-                </div>
 
-                <div class="section">
-                    <div class="section-title">Selected Project Experience</div>
-                    <ul class="research-list">
-                        <li>Residential Villa Design</li>
-                        <li>Interior Design Projects</li>
-                        <li>Landscape Design Projects</li>
-                        <li>Construction Documentation Packages</li>
-                        <li>Building Permit Documentation</li>
-                        <li>BIM-Based Design Coordination</li>
-                        <li>Site Supervision &amp; Construction Follow-Up</li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN -->
-            <div class="col-right">
-                <div class="section">
-                    <div class="section-title">Education</div>
+            <!-- LOWER GRID: EDUCATION / SOFTWARE / LANGUAGES / MEMBERSHIPS -->
+            <div class="lower-grid">
 
+                <!-- EDUCATION -->
+                <div class="block" style="margin-bottom:0;">
+                    <div class="sec-title">Education</div>
                     <div class="edu-item">
-                        <h3>Master of Arts in Architecture</h3>
-                        <div class="edu-meta">Lebanese University, Beirut — 2017–2019</div>
+                        <h4>Master of Arts in Architecture</h4>
+                        <div class="meta">Lebanese University, Beirut &mdash; 2017–2019</div>
                     </div>
-
                     <div class="edu-item">
-                        <h3>Bachelor of Arts in Architecture</h3>
-                        <div class="edu-meta">Lebanese University, Beirut — 2014–2017</div>
+                        <h4>Bachelor of Arts in Architecture</h4>
+                        <div class="meta">Lebanese University, Beirut &mdash; 2014–2017</div>
                     </div>
-
                     <div class="edu-item">
-                        <h3>First Year, B.Sc. in Mathematics</h3>
-                        <div class="edu-meta">Lebanese University, Beirut — 2013–2014</div>
+                        <h4>First Year, B.Sc. in Mathematics</h4>
+                        <div class="meta">Lebanese University, Beirut &mdash; 2013–2014</div>
                     </div>
                 </div>
 
-                <div class="section">
-                    <div class="section-title">Core Competencies</div>
-                    <ul class="tag-list">
-                        <li>Architectural Design Development</li>
-                        <li>BIM Coordination</li>
-                        <li>Revit Modeling</li>
-                        <li>Construction Documentation</li>
-                        <li>Permit Applications &amp; Regulatory Compliance</li>
-                        <li>Site Supervision</li>
-                        <li>Residential Architecture</li>
-                        <li>Commercial Architecture</li>
-                        <li>Interior Design</li>
-                        <li>Landscape Design</li>
-                        <li>Consultant Coordination</li>
-                        <li>Client Management</li>
-                        <li>Project Planning &amp; Delivery</li>
-                    </ul>
+                <!-- SOFTWARE -->
+                <div class="block" style="margin-bottom:0;">
+                    <div class="sec-title">Software</div>
+                    <div class="skill-row"><span class="name">Revit</span><span class="skill-bar"><i style="width:92%"></i></span><span class="lvl">Advanced</span></div>
+                    <div class="skill-row"><span class="name">AutoCAD 2D/3D</span><span class="skill-bar"><i style="width:92%"></i></span><span class="lvl">Advanced</span></div>
+                    <div class="skill-row"><span class="name">SketchUp</span><span class="skill-bar"><i style="width:90%"></i></span><span class="lvl">Advanced</span></div>
+                    <div class="skill-row"><span class="name">Lumion</span><span class="skill-bar"><i style="width:65%"></i></span><span class="lvl">Intermediate</span></div>
+                    <div class="skill-row"><span class="name">Adobe Photoshop</span><span class="skill-bar"><i style="width:65%"></i></span><span class="lvl">Intermediate</span></div>
+                    <div class="skill-row"><span class="name">Adobe Illustrator</span><span class="skill-bar"><i style="width:65%"></i></span><span class="lvl">Intermediate</span></div>
+                    <div class="skill-row"><span class="name">MS Office Suite</span><span class="skill-bar"><i style="width:90%"></i></span><span class="lvl">Advanced</span></div>
                 </div>
 
-                <div class="section">
-                    <div class="section-title">Software</div>
-                    <ul class="tag-list">
-                        <li>Revit &mdash; Advanced</li>
-                        <li>AutoCAD 2D/3D &mdash; Advanced</li>
-                        <li>SketchUp &mdash; Advanced</li>
-                        <li>Lumion &mdash; Intermediate</li>
-                        <li>Photoshop &mdash; Intermediate</li>
-                        <li>Illustrator &mdash; Intermediate</li>
-                        <li>MS Office Suite &mdash; Advanced</li>
-                    </ul>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">Languages</div>
-
-                    <div class="lang-item">
-                        <span class="lang-name">Arabic <span class="lang-label">Native</span></span>
-                        <span class="lang-level">
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                        </span>
+                <!-- LANGUAGES -->
+                <div class="block" style="margin-bottom:0;">
+                    <div class="sec-title">Languages</div>
+                    <div class="lang-row">
+                        <span class="name">Arabic <b>Native</b></span>
+                        <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span>
                     </div>
-
-                    <div class="lang-item">
-                        <span class="lang-name">English <span class="lang-label">Professional Working</span></span>
-                        <span class="lang-level">
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot"></span>
-                        </span>
+                    <div class="lang-row">
+                        <span class="name">English <b>Professional Working</b></span>
+                        <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span>
                     </div>
-
-                    <div class="lang-item">
-                        <span class="lang-name">French <span class="lang-label">Professional Working</span></span>
-                        <span class="lang-level">
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot"></span>
-                        </span>
+                    <div class="lang-row">
+                        <span class="name">French <b>Professional Working</b></span>
+                        <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span>
                     </div>
-
-                    <div class="lang-item">
-                        <span class="lang-name">German <span class="lang-label">B1</span></span>
-                        <span class="lang-level">
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot filled"></span>
-                            <span class="lang-dot"></span>
-                            <span class="lang-dot"></span>
-                        </span>
+                    <div class="lang-row">
+                        <span class="name">German <b>B1</b></span>
+                        <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span>
                     </div>
                 </div>
 
-                <div class="section">
-                    <div class="section-title">Professional Memberships</div>
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <h3>Bayerische Architektenkammer</h3>
-                        </div>
-                        <div class="exp-location">Registered Architect, Germany</div>
+                <!-- MEMBERSHIPS -->
+                <div class="block" style="margin-bottom:0;">
+                    <div class="sec-title">Memberships</div>
+                    <div class="mem-item">
+                        <h4>Bayerische Architektenkammer</h4>
+                        <div class="meta">Registered Architect, Germany</div>
                     </div>
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <h3>Order of Engineers and Architects</h3>
-                        </div>
-                        <div class="exp-location">Beirut, Lebanon</div>
+                    <div class="mem-item">
+                        <h4>Order of Engineers and Architects</h4>
+                        <div class="meta">Beirut, Lebanon</div>
                     </div>
                 </div>
 
             </div>
+
+            <!-- SELECTED PROJECT EXPERIENCE -->
+            <div class="block" style="margin-top:4px; margin-bottom:0;">
+                <div class="sec-title">Selected Project Experience</div>
+                <div class="proj-band">
+                    <span class="pill">Residential Villa Design</span>
+                    <span class="pill">Interior Design Projects</span>
+                    <span class="pill">Landscape Design Projects</span>
+                    <span class="pill">Construction Documentation Packages</span>
+                    <span class="pill">Building Permit Documentation</span>
+                    <span class="pill">BIM-Based Design Coordination</span>
+                    <span class="pill">Site Supervision &amp; Construction Follow-Up</span>
+                </div>
+            </div>
+
         </div>
-    </div>
 
+        <!-- FOOTER / PORTFOLIO -->
+        <div class="footer">
+            <span class="label">Portfolio</span>
+            <a href="https://layalsleiman.github.io/portfolio/">layalsleiman.github.io/portfolio</a>
+        </div>
+
+    </div>
 </body>
 </html>
