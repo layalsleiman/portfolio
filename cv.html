@@ -200,18 +200,20 @@
         }
 
         .block {
-            margin-bottom: 24px;
+            margin-bottom: 18px;
         }
 
         /* ===== PROFILE ===== */
         .profile {
             color: var(--text-muted);
             font-size: 9pt;
-            line-height: 1.75;
+            line-height: 1.65;
             padding-left: 18px;
             border-left: 2px solid var(--gold);
             font-weight: 300;
         }
+
+        .profile p + p { margin-top: 7px; }
 
         /* ===== CORE COMPETENCIES ===== */
         .comp-grid {
@@ -229,6 +231,44 @@
             font-weight: 400;
             letter-spacing: 0.3px;
             border-radius: 2px;
+        }
+
+        /* ===== COMPETENCIES BY SERVICE PHASE ===== */
+        .comp-table {
+            border-top: 1px solid var(--border);
+        }
+
+        .comp-row {
+            display: grid;
+            grid-template-columns: 165px 1fr;
+            gap: 18px;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: baseline;
+        }
+
+        .comp-key {
+            font-size: 8.6pt;
+            font-weight: 500;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+
+        .comp-key b {
+            display: block;
+            font-size: 7pt;
+            font-weight: 400;
+            color: var(--gold);
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .comp-val {
+            font-size: 8.3pt;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.5;
         }
 
         /* ===== EXPERIENCE TIMELINE ===== */
@@ -303,11 +343,13 @@
             margin: 3px 0 7px;
         }
 
-        .exp ul {
+        .exp ul,
+        .dev-list ul {
             list-style: none;
         }
 
-        .exp ul li {
+        .exp ul li,
+        .dev-list ul li {
             font-size: 8.6pt;
             color: var(--text-muted);
             line-height: 1.55;
@@ -317,7 +359,8 @@
             margin-bottom: 3px;
         }
 
-        .exp ul li::before {
+        .exp ul li::before,
+        .dev-list ul li::before {
             content: '';
             position: absolute;
             left: 0;
@@ -557,42 +600,58 @@
         <div class="header">
             <div class="header-top">
                 <h1>Layal <span>Sleiman</span></h1>
-                <div class="role">Registered Architect<br>BIM Coordination<br>Project Architect</div>
+                <div class="role">Architect (M.A.)<br>Member of the Bavarian<br>Chamber of Architects</div>
             </div>
             <div class="header-divider"></div>
             <div class="header-contact">
                 <span><span class="icon">&#9993;</span> layal.sleiman.96@gmail.com</span>
-                <span><span class="icon">&#9670;</span> Munich, Germany</span>
-                <span><span class="icon">&#9633;</span> Lebanese-German Nationality</span>
+                <span><span class="icon">&#9670;</span> Regensburg, Germany</span>
+                <span><span class="icon">&#9633;</span> German&ndash;Lebanese</span>
                 <span><span class="icon">&#9671;</span> <a href="https://layalsleiman.github.io/portfolio/">layalsleiman.github.io/portfolio</a></span>
             </div>
         </div>
 
         <div class="body-wrap">
 
-            <!-- PROFESSIONAL PROFILE -->
+            <!-- PROFILE -->
             <div class="block">
-                <div class="sec-title">Professional Profile</div>
-                <p class="profile">Registered Architect and member of the Bayerische Architektenkammer with more than 5 years of professional experience delivering residential, commercial, interior design, landscape, and construction documentation projects. Experienced in managing projects from concept design through permitting, BIM coordination, technical documentation, consultant coordination, and on-site supervision. Strong background in multidisciplinary collaboration, authority submissions, construction follow-up, and the delivery of built projects. Proficient in Revit, AutoCAD, SketchUp, and Lumion, with a focus on high-quality architectural documentation and practical design solutions.</p>
+                <div class="sec-title">Profile</div>
+                <div class="profile">
+                    <p>Registered Architect (M.A.) and member of the Bayerische Architektenkammer with approximately seven years of professional experience in design, permit and execution planning for residential, commercial and mixed-use building projects.</p>
+                    <p>Independent delivery of HOAI service phases 1&ndash;5: needs analysis and basic evaluation with the client, development and presentation of the architectural design, permit documentation, and execution and detail planning.</p>
+                    <p>Consistently BIM-based planning with Autodesk Revit across all project phases, including model coordination with structural and MEP engineering as well as liaison with authorities and contractors.</p>
+                    <p>Structured, quality- and results-oriented working style with strong client focus. Based in the Regensburg area.</p>
+                </div>
             </div>
 
-            <!-- CORE COMPETENCIES -->
+            <!-- CORE COMPETENCIES BY SERVICE PHASE -->
             <div class="block">
-                <div class="sec-title">Core Competencies</div>
-                <div class="comp-grid">
-                    <span class="pill">Architectural Design Development</span>
-                    <span class="pill">BIM Coordination</span>
-                    <span class="pill">Revit Modeling</span>
-                    <span class="pill">Construction Documentation</span>
-                    <span class="pill">Permit Applications &amp; Regulatory Compliance</span>
-                    <span class="pill">Site Supervision</span>
-                    <span class="pill">Residential Architecture</span>
-                    <span class="pill">Commercial Architecture</span>
-                    <span class="pill">Interior Design</span>
-                    <span class="pill">Landscape Design</span>
-                    <span class="pill">Consultant Coordination</span>
-                    <span class="pill">Client Management</span>
-                    <span class="pill">Project Planning &amp; Delivery</span>
+                <div class="sec-title">Core Competencies by Service Phase</div>
+                <div class="comp-table">
+                    <div class="comp-row">
+                        <div class="comp-key">Basic Evaluation &amp; Preliminary Design<b>HOAI LP 1&ndash;2</b></div>
+                        <div class="comp-val">Needs analysis and basic evaluation with clients &middot; Site and feasibility studies &middot; Development of design options as a decision basis</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-key">Design &amp; Permit Planning<b>HOAI LP 3&ndash;4</b></div>
+                        <div class="comp-val">Translation of client requirements into the architectural design &middot; Design presentation to the client &middot; Building permit and approval documentation &middot; Coordination with authorities</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-key">Execution Planning<b>HOAI LP 5</b></div>
+                        <div class="comp-val">Execution and detail planning &middot; Working drawings to construction readiness &middot; Building specifications and technical documentation</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-key">BIM &amp; CAD<b>Methodology</b></div>
+                        <div class="comp-val">Autodesk Revit: model setup, component families, model-based drawing production, model coordination &middot; AutoCAD &middot; IFC data exchange &middot; BIM-based consultant coordination</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-key">Coordination<b>Interfaces</b></div>
+                        <div class="comp-val">Structural, HVAC/plumbing and electrical engineers &middot; Clients and users &middot; Authorities &middot; Contractors</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-key">Quality Assurance<b>Delivery</b></div>
+                        <div class="comp-val">Site inspections &middot; Reconciliation of planning and execution &middot; Safeguarding the design intent through to completion</div>
+                    </div>
                 </div>
             </div>
 
@@ -603,36 +662,18 @@
 
                     <div class="exp">
                         <div class="exp-head">
-                            <div class="exp-role">Freelance Architect</div>
+                            <div class="exp-role">Freelance Architect — Own Practice</div>
                             <span class="exp-date">2021 — Present</span>
                         </div>
-                        <div class="exp-place">Lebanon</div>
+                        <div class="exp-place">Lebanon &middot; project-based</div>
+                        <div class="proj-types" style="margin:0 0 7px; padding-left:0;"><b>Project types:</b> Residential (single-family houses / villas) &middot; Interior fit-out &middot; Landscape design &middot; Execution planning packages</div>
                         <ul>
-                            <li>Delivered 7 completed architectural projects including residential villas, interior design projects, landscape developments, and comprehensive construction documentation packages</li>
-                            <li>Developed architectural concepts, design presentations, permit drawings, and execution documentation</li>
-                            <li>Coordinated multidisciplinary teams including structural, mechanical, electrical, and specialist consultants</li>
-                            <li>Managed BIM-based workflows using Revit throughout project development</li>
-                            <li>Conducted site visits and construction supervision to ensure compliance with design intent and quality standards</li>
-                            <li>Coordinated directly with clients, contractors, and authorities during project execution</li>
-                            <li>Produced detailed documentation packages integrating architectural, structural, and MEP requirements</li>
-                        </ul>
-                        <div class="proj-types"><b>Selected project types:</b> Residential Villas &middot; Interior Design &middot; Landscape Design &middot; Construction Documentation Packages</div>
-                    </div>
-
-                    <div class="exp">
-                        <div class="exp-head">
-                            <div class="exp-role">Architect — SFArchitects</div>
-                            <span class="exp-date">Oct 2019 — Oct 2021</span>
-                        </div>
-                        <div class="exp-place">Beirut, Lebanon</div>
-                        <ul>
-                            <li>Participated in the design and development of residential, commercial, and mixed-use projects</li>
-                            <li>Conducted site analysis and feasibility studies to support design decision-making</li>
-                            <li>Developed plans, elevations, sections, and architectural presentation packages</li>
-                            <li>Coordinated with engineers and consultants to integrate technical requirements into project documentation</li>
-                            <li>Assisted in building permit applications and regulatory approval processes</li>
-                            <li>Conducted site visits and monitored construction progress</li>
-                            <li>Prepared project specifications and supported project scheduling activities</li>
+                            <li>Independent delivery of seven completed projects across service phases 1&ndash;5 — from needs analysis through to complete execution planning</li>
+                            <li>Development of the architectural design from client requirements, including presentation and iterative coordination through to approval</li>
+                            <li>Preparation of permit documentation and coordination with the relevant authorities</li>
+                            <li>Setup and maintenance of coordinated Revit models across all planning phases, with model-based drawing production</li>
+                            <li>Technical coordination of structural, HVAC and electrical engineering into a fully integrated design</li>
+                            <li>Execution and detail planning, site support and quality assurance through to completion</li>
                         </ul>
                     </div>
 
@@ -659,40 +700,35 @@
 
             <!-- PROFESSIONAL EXPERIENCE (continued) -->
             <div class="block">
-                <div class="sec-title">Experience (continued)</div>
+                <div class="sec-title">Professional Experience — Continued</div>
                 <div class="timeline">
 
                     <div class="exp">
                         <div class="exp-head">
-                            <div class="exp-role">Architectural Intern — Prime Construction / Bitar Construction</div>
-                            <span class="exp-date">2018</span>
+                            <div class="exp-role">Architect — SFArchitects</div>
+                            <span class="exp-date">10/2019 — 10/2021</span>
                         </div>
                         <div class="exp-place">Beirut, Lebanon</div>
                         <ul>
-                            <li>Assisted in architectural design development and construction documentation</li>
-                            <li>Supported project teams during design coordination and site activities</li>
+                            <li>Design and execution planning for residential, commercial and mixed-use building projects</li>
+                            <li>Site analyses and feasibility studies as a basis for design and investment decisions</li>
+                            <li>Preparation of floor plans, elevations, sections and presentation material for client meetings</li>
+                            <li>Contribution to building permit applications and regulatory approval processes</li>
+                            <li>Coordination with specialist engineers to integrate technical requirements into the planning documents</li>
+                            <li>Site inspections, monitoring of construction progress, and contribution to building specifications and scheduling</li>
                         </ul>
                     </div>
 
                     <div class="exp">
                         <div class="exp-head">
-                            <div class="exp-role">Architectural Intern — Office of Dr. Ali Hassan</div>
-                            <span class="exp-date">2017</span>
+                            <div class="exp-role">Internships in Architecture and Construction</div>
+                            <span class="exp-date">2016 — 2018</span>
                         </div>
-                        <div class="exp-place">Bekaa, Lebanon</div>
+                        <div class="exp-place">Beirut and Bekaa, Lebanon</div>
                         <ul>
-                            <li>Assisted in residential project development and technical drawing production</li>
-                        </ul>
-                    </div>
-
-                    <div class="exp">
-                        <div class="exp-head">
-                            <div class="exp-role">Architectural Intern — Municipal Office</div>
-                            <span class="exp-date">2016</span>
-                        </div>
-                        <div class="exp-place">Beirut, Lebanon</div>
-                        <ul>
-                            <li>Supported municipal planning and architectural review activities</li>
+                            <li>Prime Construction / Bitar Construction, Beirut (2018) — Contribution to design development and execution documentation; support to project teams in planning coordination and site activities</li>
+                            <li>Office of Dr. Ali Hassan, Bekaa (2017) — Work on residential projects and production of technical drawings</li>
+                            <li>Municipal Office, Beirut (2016) — Support for municipal planning and building review activities</li>
                         </ul>
                     </div>
 
@@ -705,28 +741,24 @@
                 <div class="block" style="margin-bottom:0;">
                     <div class="sec-title">Education</div>
                     <div class="edu-item">
-                        <h4>Master of Arts in Architecture</h4>
+                        <h4>Master of Arts &mdash; Architecture</h4>
                         <div class="meta">Lebanese University, Beirut &mdash; 2017–2019</div>
                     </div>
                     <div class="edu-item">
-                        <h4>Bachelor of Arts in Architecture</h4>
+                        <h4>Bachelor of Arts &mdash; Architecture</h4>
                         <div class="meta">Lebanese University, Beirut &mdash; 2014–2017</div>
-                    </div>
-                    <div class="edu-item">
-                        <h4>First Year, B.Sc. in Mathematics</h4>
-                        <div class="meta">Lebanese University, Beirut &mdash; 2013–2014</div>
                     </div>
                 </div>
 
                 <div class="block" style="margin-bottom:0;">
                     <div class="sec-title">Software</div>
-                    <div class="skill-row"><span class="name">Revit</span><span class="skill-bar"><i style="width:92%"></i></span><span class="lvl">Advanced</span></div>
-                    <div class="skill-row"><span class="name">AutoCAD 2D/3D</span><span class="skill-bar"><i style="width:92%"></i></span><span class="lvl">Advanced</span></div>
+                    <div class="skill-row"><span class="name">Autodesk Revit</span><span class="skill-bar"><i style="width:92%"></i></span><span class="lvl">Advanced</span></div>
+                    <div class="skill-row"><span class="name">AutoCAD</span><span class="skill-bar"><i style="width:92%"></i></span><span class="lvl">Advanced</span></div>
+                    <div class="skill-row"><span class="name">MS Office</span><span class="skill-bar"><i style="width:90%"></i></span><span class="lvl">Advanced</span></div>
                     <div class="skill-row"><span class="name">SketchUp</span><span class="skill-bar"><i style="width:90%"></i></span><span class="lvl">Advanced</span></div>
-                    <div class="skill-row"><span class="name">Lumion</span><span class="skill-bar"><i style="width:65%"></i></span><span class="lvl">Intermediate</span></div>
-                    <div class="skill-row"><span class="name">Adobe Photoshop</span><span class="skill-bar"><i style="width:65%"></i></span><span class="lvl">Intermediate</span></div>
-                    <div class="skill-row"><span class="name">Adobe Illustrator</span><span class="skill-bar"><i style="width:65%"></i></span><span class="lvl">Intermediate</span></div>
-                    <div class="skill-row"><span class="name">MS Office Suite</span><span class="skill-bar"><i style="width:90%"></i></span><span class="lvl">Advanced</span></div>
+                    <div class="skill-row"><span class="name">Adobe ID / PS / AI</span><span class="skill-bar"><i style="width:70%"></i></span><span class="lvl">Proficient</span></div>
+                    <div class="skill-row"><span class="name">Lumion</span><span class="skill-bar"><i style="width:70%"></i></span><span class="lvl">Proficient</span></div>
+                    <div class="skill-row"><span class="name">IFC / Model Coord.</span><span class="skill-bar"><i style="width:70%"></i></span><span class="lvl">Proficient</span></div>
                 </div>
 
                 <div class="block" style="margin-bottom:0;">
@@ -744,36 +776,34 @@
                         <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span>
                     </div>
                     <div class="lang-row">
-                        <span class="name">German <b>B1</b></span>
+                        <span class="name">German <b>B1 (certified)</b></span>
                         <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span>
                     </div>
                 </div>
 
                 <div class="block" style="margin-bottom:0;">
-                    <div class="sec-title">Memberships</div>
+                    <div class="sec-title">Recognition</div>
                     <div class="mem-item">
                         <h4>Bayerische Architektenkammer</h4>
-                        <div class="meta">Registered Architect, Germany</div>
+                        <div class="meta">Registered Architect, Germany &mdash; German professional recognition completed</div>
                     </div>
                     <div class="mem-item">
                         <h4>Order of Engineers and Architects</h4>
-                        <div class="meta">Beirut, Lebanon</div>
+                        <div class="meta">Beirut, Lebanon &mdash; registered member</div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- SELECTED PROJECT EXPERIENCE -->
+            <!-- CONTINUING DEVELOPMENT -->
             <div class="block" style="margin-top:14px;">
-                <div class="sec-title">Selected Project Experience</div>
-                <div class="proj-band">
-                    <span class="pill">Residential Villa Design</span>
-                    <span class="pill">Interior Design Projects</span>
-                    <span class="pill">Landscape Design Projects</span>
-                    <span class="pill">Construction Documentation Packages</span>
-                    <span class="pill">Building Permit Documentation</span>
-                    <span class="pill">BIM-Based Design Coordination</span>
-                    <span class="pill">Site Supervision &amp; Construction Follow-Up</span>
+                <div class="sec-title">Continuing Development &amp; German Planning Context</div>
+                <div class="dev-list">
+                    <ul>
+                        <li>Intensive self-directed study of the HOAI and its service phases, together with German building submission, documentation and execution standards</li>
+                        <li>Ongoing development in BIM methodology and Revit-based collaborative workflows</li>
+                        <li>German language course in progress, targeting level B2</li>
+                    </ul>
                 </div>
             </div>
 
